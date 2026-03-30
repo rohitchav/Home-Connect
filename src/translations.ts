@@ -6,7 +6,7 @@ export const translations = {
     logout: "लॉगआउट",
     dashboard: "डॅशबोर्ड",
     transactions: "व्यवहार",
-    privateLoans: "खाजगी कर्ज (उसाने)",
+    privateLoans: "खाजगी कर्ज",
     settings: "सेटिंग्ज",
     income: "उत्पन्न",
     expense: "खर्च",
@@ -74,7 +74,18 @@ export const translations = {
     reportSent: "अहवाल ईमेलवर पाठवला आहे!",
     carryForward: "पुढील महिन्यासाठी शिल्लक",
     memberContribution: "सदस्य योगदान",
-    loanSummary: "कर्ज (उसनवारी) सारांश"
+    loanSummary: "कर्ज (उसनवारी) सारांश",
+    sendReport: "अहवाल पाठवा",
+    language: "भाषा",
+    familyInfo: "कुटुंब माहिती",
+    monthlyBudget: "मासिक बजेट",
+    savings: "बचत",
+    totalSavings: "एकूण बचत",
+    monthlySavings: "मासिक बचत",
+    addSavings: "बचत जोडा",
+    savingsHistory: "बचत इतिहास",
+    insufficientBalance: "तुमच्याकडे पुरेशी शिल्लक नाही!",
+    savingsWarning: "तुम्ही शिलकीपेक्षा जास्त बचत करू शकत नाही."
   },
   en: {
     appName: "Family Finance Manager",
@@ -151,6 +162,17 @@ export const translations = {
     reportSent: "Report sent to email!",
     carryForward: "Carry Forward Balance",
     memberContribution: "Member Contribution",
-    loanSummary: "Loan Summary"
+    loanSummary: "Loan Summary",
+    sendReport: "Send Report",
+    language: "Language",
+    familyInfo: "Family Info",
+    monthlyBudget: "Monthly Budget",
+    savings: "Savings",
+    totalSavings: "Total Savings",
+    monthlySavings: "Monthly Savings",
+    addSavings: "Add Savings",
+    savingsHistory: "Savings History",
+    insufficientBalance: "Insufficient balance!",
+    savingsWarning: "You cannot save more than your available balance."
   }
 };
