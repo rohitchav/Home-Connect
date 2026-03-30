@@ -780,7 +780,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="container-responsive py-4 space-y-4">
+      <main className="container-responsive py-4 space-y-4 pb-24 sm:pb-10">
         <AnimatePresence mode="wait">
           {view === 'dashboard' && (
             <motion.div 
@@ -1548,27 +1548,27 @@ export default function App() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
-              <div className="bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+              <div className="bg-white dark:bg-stone-900 p-4 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors w-full max-w-full overflow-hidden">
                 <h2 className="text-lg sm:text-2xl font-black text-stone-900 dark:text-stone-50 mb-6 sm:mb-8">{t.settings}</h2>
                 
-                <div className="space-y-8 sm:space-y-10">
+                <div className="space-y-4 sm:space-y-6">
                   {/* Language & Theme */}
                   <div className="space-y-4 sm:space-y-6">
                     <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "प्राधान्ये" : "Preferences"}</h3>
                     <div className="flex flex-col gap-3 sm:gap-4">
-                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl">
+                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl gap-4">
                         <div className="flex items-center gap-3 sm:gap-4">
                           <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" />
                           <span className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.language}</span>
                         </div>
-                        <div className="flex gap-2">
-                          <button onClick={() => setLang('mr')} className={cn("px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>मराठी</button>
-                          <button onClick={() => setLang('en')} className={cn("px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>English</button>
+                        <div className="flex flex-wrap gap-2">
+                          <button onClick={() => setLang('mr')} className={cn("flex-1 sm:flex-none text-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>मराठी</button>
+                          <button onClick={() => setLang('en')} className={cn("flex-1 sm:flex-none text-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>English</button>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl">
+                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl gap-4">
                         <div className="flex items-center gap-3 sm:gap-4">
                           {darkMode ? <Moon className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" /> : <Sun className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" />}
                           <span className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.darkMode}</span>
@@ -1592,7 +1592,7 @@ export default function App() {
                   {/* Family Info */}
                   <div className="space-y-4 sm:space-y-6">
                     <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{t.familyInfo}</h3>
-                    <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                    <div className="p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
                       <div className="space-y-1 sm:space-y-2">
                         <p className="text-xs sm:text-base font-black text-stone-500 uppercase tracking-wider">{t.familyName}</p>
                         <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{family?.name}</p>
@@ -1621,7 +1621,7 @@ export default function App() {
                     <div className="space-y-4 sm:space-y-6">
                       <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "बजेट आणि उद्दिष्टे" : "Budget & Goals"}</h3>
                       <div className="grid grid-cols-1 gap-4">
-                        <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                        <div className="p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
                           <div className="space-y-2 sm:space-y-4">
                             <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.monthlyBudget}</label>
                             <div className="relative">
@@ -1678,7 +1678,7 @@ export default function App() {
                   {profile.role === 'admin' && (
                     <div className="space-y-4 sm:space-y-6">
                       <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{t.manageCategories}</h3>
-                      <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                      <div className="p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
                         <div className="flex flex-wrap gap-2 sm:gap-3">
                           {(family?.categories || []).map(cat => (
                             <div key={cat} className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-stone-900 rounded-xl sm:rounded-2xl border-2 border-stone-100 dark:border-stone-700 font-bold text-xs sm:text-base text-stone-700 dark:text-stone-300">
@@ -1689,7 +1689,7 @@ export default function App() {
                             </div>
                           ))}
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 items-stretch">
                           <input 
                             type="text" 
                             id="settingsCategoryInput"
@@ -1704,7 +1704,7 @@ export default function App() {
                                 input.value = '';
                               }
                             }}
-                            className="px-4 sm:px-6 bg-stone-900 dark:bg-stone-700 text-white rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base hover:bg-black transition-all"
+                            className="px-4 sm:px-6 py-3 sm:py-4 bg-stone-900 dark:bg-stone-700 text-white rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base hover:bg-black transition-all flex items-center justify-center whitespace-nowrap"
                           >
                             {t.save}
                           </button>
@@ -1726,13 +1726,13 @@ export default function App() {
 
               {/* Members List */}
               <div className="bg-white dark:bg-stone-900 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-5 sm:p-8 border-b-2 border-stone-100 dark:border-stone-800 flex items-center gap-3 sm:gap-4">
+                <div className="p-4 sm:p-6 border-b-2 border-stone-100 dark:border-stone-800 flex items-center gap-3 sm:gap-4">
                   <Users className="w-6 h-6 sm:w-8 sm:h-8 text-stone-900 dark:text-stone-50" />
                   <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.familyMembers}</h3>
                 </div>
                 <div className="divide-y-2 divide-stone-100 dark:divide-stone-800">
                   {familyMembers.map(member => (
-                    <div key={member.uid} className="p-5 sm:p-8 flex items-center justify-between">
+                    <div key={member.uid} className="p-4 sm:p-6 flex items-center justify-between">
                       <div className="flex items-center gap-3 sm:gap-5">
                         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-400 font-black text-lg sm:text-xl shadow-inner">
                           {member.name[0]}
