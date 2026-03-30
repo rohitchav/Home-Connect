@@ -1732,21 +1732,11 @@ export default function App() {
       </main>
 
       {/* Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 px-2 py-2 flex justify-around items-center z-20 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] transition-colors">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-800 px-4 py-2 flex justify-around items-center z-20 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] transition-colors">
         <NavButton active={view === 'dashboard'} onClick={() => setView('dashboard')} icon={<LayoutDashboard />} label={t.dashboard} />
         <NavButton active={view === 'transactions'} onClick={() => setView('transactions')} icon={<PlusCircle />} label={t.transactions} />
         <NavButton active={view === 'savings'} onClick={() => setView('savings')} icon={<PiggyBank />} label={t.savings} />
         
-        {/* Central Add Button for quick access */}
-        <div className="relative -top-6">
-          <button 
-            onClick={() => setView('transactions')}
-            className="w-16 h-16 bg-orange-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
-          >
-            <Plus className="w-8 h-8" strokeWidth={3} />
-          </button>
-        </div>
-
         <NavButton active={view === 'private'} onClick={() => setView('private')} icon={<HandCoins />} label={t.privateLoans} />
         <NavButton active={view === 'history'} onClick={() => setView('history')} icon={<Calendar />} label={t.history} />
       </nav>
