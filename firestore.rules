@@ -1,0 +1,84 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function getFamily(familyId) {
+      return get(/databases/$(database)/documents/families/$(familyId)).data;
+    }
+
+    function isFamilyMember(familyId) {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.familyId == familyId;
+    }
+
+    function isFamilyAdmin(familyId) {
+      return isAuthenticated() && 
+        getFamily(familyId).adminUid == request.auth.uid;
+    }
+
+    function isValidString(val, min, max) {
+      return val is string && val.size() >= min && val.size() <= max;
+    }
+
+    function isValidNumber(val, min, max) {
+      return val is number && val >= min && val <= max;
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isOwner(userId) || (isAuthenticated() && isFamilyMember(resource.data.familyId));
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || (isAuthenticated() && isFamilyAdmin(resource.data.familyId));
+      allow delete: if false;
+    }
+
+    // Families collection
+    match /families/{familyId} {
+      allow read: if isFamilyMember(familyId);
+      allow create: if isAuthenticated();
+      allow update: if isFamilyAdmin(familyId);
+      allow delete: if false;
+
+      // Transactions subcollection
+      match /transactions/{transactionId} {
+        allow read: if isFamilyMember(familyId);
+        allow create: if isFamilyMember(familyId);
+        allow update: if isFamilyMember(familyId) && (resource.data.uid == request.auth.uid || isFamilyAdmin(familyId));
+        allow delete: if isFamilyMember(familyId) && (resource.data.uid == request.auth.uid || isFamilyAdmin(familyId));
+      }
+
+      // Archives subcollection
+      match /archives/{reportId} {
+        allow read: if isFamilyMember(familyId);
+        allow create: if isFamilyAdmin(familyId);
+        allow update: if false;
+        allow delete: if false;
+
+        match /transactions/{transactionId} {
+          allow read: if isFamilyMember(familyId);
+          allow create: if isFamilyAdmin(familyId);
+          allow update, delete: if false;
+        }
+      }
+    }
+
+    // Private Loans subcollection
+    match /users/{userId}/privateLoans/{loanId} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "Family": {
+      "title": "Family",
+      "description": "A family account that groups multiple members.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the family." },
+        "adminUid": { "type": "string", "description": "The UID of the family head (admin)." },
+        "budget": { "type": "number", "description": "Monthly budget for the family." },
+        "savingsGoal": { "type": "string", "description": "The name of the savings goal." },
+        "savingsGoalAmount": { "type": "number", "description": "The target amount for the savings goal." },
+        "currentSavings": { "type": "number", "description": "Current amount saved towards the goal." },
+        "categories": { "type": "array", "items": { "type": "string" }, "description": "Dynamic categories for transactions." },
+        "lastProcessedMonth": { "type": "string", "description": "The last month that was archived (YYYY-MM)." },
+        "carryForwardBalance": { "type": "number", "description": "Balance carried forward from the previous month." }
+      },
+      "required": ["name", "adminUid"]
+    },
+    "MonthlyReport": {
+      "title": "Monthly Report",
+      "description": "A summary of the family's financial performance for a specific month.",
+      "type": "object",
+      "properties": {
+        "month": { "type": "string", "description": "The month and year (e.g., '2024-03')." },
+        "totalIncome": { "type": "number", "description": "Total income for the month." },
+        "totalExpense": { "type": "number", "description": "Total expenses for the month." },
+        "balance": { "type": "number", "description": "Remaining balance (savings) for the month." },
+        "categoryBreakdown": { "type": "object", "description": "Expense totals by category." },
+        "memberContributions": { "type": "object", "description": "Income/Expense totals by member." },
+        "loanSummary": { "type": "object", "description": "Summary of private loans." }
+      },
+      "required": ["month", "totalIncome", "totalExpense", "balance"]
+    },
+    "User": {
+      "title": "User",
+      "description": "A member of a family.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "The name of the user." },
+        "familyId": { "type": "string", "description": "The ID of the family this user belongs to." },
+        "role": { "type": "string", "enum": ["admin", "member"], "description": "The role of the user within the family." },
+        "email": { "type": "string", "description": "The email address of the user." }
+      },
+      "required": ["name", "familyId", "role"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "An income or expense record for the family.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The UID of the user who added this transaction." },
+        "userName": { "type": "string", "description": "The name of the user who added this transaction." },
+        "amount": { "type": "number", "description": "The transaction amount." },
+        "type": { "type": "string", "enum": ["income", "expense"], "description": "The type of transaction." },
+        "category": { "type": "string", "description": "The category of the transaction." },
+        "date": { "type": "string", "format": "date", "description": "The date of the transaction (ISO 8601)." },
+        "notes": { "type": "string", "description": "Optional notes for the transaction." },
+        "isRecurring": { "type": "boolean", "description": "Whether this is a recurring monthly transaction." }
+      },
+      "required": ["uid", "amount", "type", "category", "date"]
+    },
+    "PrivateLoan": {
+      "title": "Private Loan",
+      "description": "A record of money lent or borrowed, visible only to the user.",
+      "type": "object",
+      "properties": {
+        "personName": { "type": "string", "description": "The name of the person involved." },
+        "amount": { "type": "number", "description": "The loan amount." },
+        "type": { "type": "string", "enum": ["lent", "borrowed"], "description": "Whether the money was lent or borrowed." },
+        "status": { "type": "string", "enum": ["pending", "returned"], "description": "The current status of the loan." },
+        "date": { "type": "string", "format": "date", "description": "The date of the transaction (ISO 8601)." },
+        "notes": { "type": "string", "description": "Optional notes for the loan." }
+      },
+      "required": ["personName", "amount", "type", "status", "date"]
+    }
+  },
+  "firestore": {
+    "/families/{familyId}": {
+      "schema": "Family",
+      "description": "Family settings and metadata."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and family membership."
+    },
+    "/families/{familyId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Family-wide income and expense records."
+    },
+    "/families/{familyId}/archives/{reportId}": {
+      "schema": "MonthlyReport",
+      "description": "Monthly financial summaries."
+    },
+    "/families/{familyId}/archives/{reportId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Archived transactions for a specific month."
+    },
+    "/users/{userId}/privateLoans/{loanId}": {
+      "schema": "PrivateLoan",
+      "description": "Private loan records for a specific user."
+    }
+  }
+}
