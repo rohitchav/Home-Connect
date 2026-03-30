@@ -85,7 +85,10 @@ export const translations = {
     addSavings: "बचत जोडा",
     savingsHistory: "बचत इतिहास",
     insufficientBalance: "तुमच्याकडे पुरेशी शिल्लक नाही!",
-    savingsWarning: "तुम्ही शिलकीपेक्षा जास्त बचत करू शकत नाही."
+    savingsWarning: "तुम्ही शिलकीपेक्षा जास्त बचत करू शकत नाही.",
+    today: "आज",
+    all: "सर्व",
+    filterByDate: "तारखेनुसार फिल्टर करा"
   },
   en: {
     appName: "Family Finance Manager",
@@ -173,6 +176,9 @@ export const translations = {
     addSavings: "Add Savings",
     savingsHistory: "Savings History",
     insufficientBalance: "Insufficient balance!",
-    savingsWarning: "You cannot save more than your available balance."
+    savingsWarning: "You cannot save more than your available balance.",
+    today: "Today",
+    all: "All",
+    filterByDate: "Filter by Date"
   }
 };

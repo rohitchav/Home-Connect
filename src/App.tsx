@@ -44,7 +44,8 @@ import {
   Moon,
   Sun,
   Mail,
-  PiggyBank
+  PiggyBank,
+  X
 } from 'lucide-react';
 import { 
   BarChart, 
@@ -158,6 +159,7 @@ export default function App() {
   const [familyIdInput, setFamilyIdInput] = useState('');
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error', msg: string } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [dateFilter, setDateFilter] = useState<string>(new Date().toISOString().split('T')[0]);
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
@@ -380,6 +382,19 @@ export default function App() {
   const updateFamilySettings = async (data: Partial<Family>) => {
     if (!profile?.familyId) return;
     await updateDoc(doc(db, 'families', profile.familyId), data);
+  };
+
+  const addCategory = async (newCategory: string) => {
+    if (!profile?.familyId || !family || !newCategory.trim()) return;
+    const updatedCategories = [...(family.categories || []), newCategory.trim()];
+    await updateFamilySettings({ categories: updatedCategories });
+    setFeedback({ type: 'success', msg: lang === 'mr' ? "वर्ग जोडला!" : "Category added!" });
+  };
+
+  const removeCategory = async (categoryToRemove: string) => {
+    if (!profile?.familyId || !family) return;
+    const updatedCategories = (family.categories || []).filter(c => c !== categoryToRemove);
+    await updateFamilySettings({ categories: updatedCategories });
   };
 
   const removeMember = async (uid: string) => {
@@ -946,49 +961,6 @@ export default function App() {
                 </div>
               )}
 
-              {/* Recent Transactions */}
-              <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-8 border-b border-stone-100 dark:border-stone-800 flex justify-between items-center">
-                  <h3 className="text-xl font-black text-stone-900 dark:text-stone-50">{t.transactions}</h3>
-                  <button onClick={() => setView('transactions')} className="text-orange-600 dark:text-orange-400 font-black text-base flex items-center gap-1">
-                    {lang === 'mr' ? "सर्व पहा" : "See All"} <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-                <div className="divide-y divide-stone-100 dark:divide-stone-800">
-                  {transactions.slice(0, 5).map(tr => (
-                    <div key={tr.id} className="p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
-                      <div className="flex items-center gap-5 min-w-0">
-                        <div className={cn(
-                          "w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm shrink-0",
-                          tr.type === 'income' ? "bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400" : 
-                          tr.type === 'savings' ? "bg-blue-100 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400" :
-                          "bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400"
-                        )}>
-                          {tr.type === 'income' ? <TrendingUp className="w-8 h-8" /> : 
-                           tr.type === 'savings' ? <PiggyBank className="w-8 h-8" /> :
-                           <TrendingDown className="w-8 h-8" />}
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-bold text-xl text-stone-900 dark:text-stone-50 truncate">{tr.category}</p>
-                          <p className="text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{tr.userName} • {new Date(tr.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}</p>
-                        </div>
-                      </div>
-                      <p className={cn("font-black text-xl shrink-0 ml-4", 
-                        tr.type === 'income' ? "text-green-600 dark:text-green-400" : 
-                        tr.type === 'savings' ? "text-blue-600 dark:text-blue-400" :
-                        "text-red-600 dark:text-red-400"
-                      )}>
-                        {tr.type === 'income' ? '+' : '-'}₹{tr.amount.toLocaleString()}
-                      </p>
-                    </div>
-                  ))}
-                  {transactions.length === 0 && (
-                    <div className="p-16 text-center text-stone-400 font-bold text-lg">
-                      {t.noTransactions}
-                    </div>
-                  )}
-                </div>
-              </div>
             </motion.div>
           )}
 
@@ -1064,11 +1036,37 @@ export default function App() {
                   <div className="grid grid-cols-1 gap-6">
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.category}</label>
-                      <select name="category" className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50 appearance-none">
-                        {(family?.categories || [t.food, t.farming, t.education, t.medical, t.others]).map(cat => (
-                          <option key={cat} value={cat} className="dark:bg-stone-900">{cat}</option>
-                        ))}
-                      </select>
+                      <div className="flex gap-2">
+                        <select name="category" className="flex-1 p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50 appearance-none">
+                          {(family?.categories || [t.food, t.farming, t.education, t.medical, t.others]).map(cat => (
+                            <option key={cat} value={cat} className="dark:bg-stone-900">{cat}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.addCategory}</label>
+                      <div className="flex gap-2">
+                        <input 
+                          type="text" 
+                          id="newCategoryInput"
+                          placeholder={t.addCategory}
+                          className="flex-1 p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50"
+                        />
+                        <button 
+                          type="button"
+                          onClick={() => {
+                            const input = document.getElementById('newCategoryInput') as HTMLInputElement;
+                            if (input.value) {
+                              addCategory(input.value);
+                              input.value = '';
+                            }
+                          }}
+                          className="px-6 bg-orange-600 text-white rounded-3xl font-bold hover:bg-orange-700 transition-all"
+                        >
+                          <Plus className="w-6 h-6" />
+                        </button>
+                      </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.date}</label>
@@ -1104,11 +1102,48 @@ export default function App() {
               </div>
 
               <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-8 border-b border-stone-100 dark:border-stone-800">
-                  <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-50">{t.transactions}</h3>
+                <div className="p-8 border-b border-stone-100 dark:border-stone-800 space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-50">{t.transactions}</h3>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button 
+                      onClick={() => setDateFilter(new Date().toISOString().split('T')[0])}
+                      className={cn(
+                        "px-6 py-3 rounded-2xl font-bold text-base transition-all",
+                        dateFilter === new Date().toISOString().split('T')[0] 
+                          ? "bg-orange-600 text-white shadow-md shadow-orange-200 dark:shadow-none" 
+                          : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
+                      )}
+                    >
+                      {t.today}
+                    </button>
+                    <button 
+                      onClick={() => setDateFilter('all')}
+                      className={cn(
+                        "px-6 py-3 rounded-2xl font-bold text-base transition-all",
+                        dateFilter === 'all' 
+                          ? "bg-orange-600 text-white shadow-md shadow-orange-200 dark:shadow-none" 
+                          : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
+                      )}
+                    >
+                      {t.all}
+                    </button>
+                    <div className="relative flex-1 min-w-[160px]">
+                      <input 
+                        type="date" 
+                        value={dateFilter === 'all' ? '' : dateFilter}
+                        onChange={(e) => setDateFilter(e.target.value)}
+                        className="w-full px-4 py-3 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-50 rounded-2xl font-bold text-base outline-none focus:ring-2 focus:ring-orange-500 border-none transition-all"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="divide-y divide-stone-100 dark:divide-stone-800">
-                  {transactions.map(tr => (
+                  {transactions
+                    .filter(tr => dateFilter === 'all' || tr.date === dateFilter)
+                    .map(tr => (
                     <div key={tr.id} className="p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
                       <div className="flex items-center gap-5 min-w-0">
                         <div className={cn(
@@ -1658,6 +1693,45 @@ export default function App() {
                               />
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Categories Management */}
+                  {profile.role === 'admin' && (
+                    <div className="space-y-6">
+                      <h3 className="text-lg font-black text-stone-400 uppercase tracking-widest">{t.manageCategories}</h3>
+                      <div className="p-8 bg-stone-50 dark:bg-stone-800 rounded-[2rem] space-y-6">
+                        <div className="flex flex-wrap gap-3">
+                          {(family?.categories || []).map(cat => (
+                            <div key={cat} className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-stone-900 rounded-2xl border-2 border-stone-100 dark:border-stone-700 font-bold text-stone-700 dark:text-stone-300">
+                              {cat}
+                              <button onClick={() => removeCategory(cat)} className="text-red-500 hover:text-red-700">
+                                <X className="w-4 h-4" />
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex gap-2">
+                          <input 
+                            type="text" 
+                            id="settingsCategoryInput"
+                            placeholder={t.addCategory}
+                            className="flex-1 p-4 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl focus:border-orange-500 outline-none font-bold dark:text-stone-50"
+                          />
+                          <button 
+                            onClick={() => {
+                              const input = document.getElementById('settingsCategoryInput') as HTMLInputElement;
+                              if (input.value) {
+                                addCategory(input.value);
+                                input.value = '';
+                              }
+                            }}
+                            className="px-6 bg-stone-900 dark:bg-stone-700 text-white rounded-2xl font-bold hover:bg-black transition-all"
+                          >
+                            {t.save}
+                          </button>
                         </div>
                       </div>
                     </div>
