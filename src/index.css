@@ -34,6 +34,10 @@
   body {
     @apply overflow-x-hidden;
   }
+
+  .container-responsive {
+    @apply px-4 sm:px-6 max-w-4xl mx-auto;
+  }
 }
 
 /* Custom scrollbar for better visibility in dark mode */

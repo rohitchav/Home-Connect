@@ -582,7 +582,7 @@ export default function App() {
   // --- Render Helpers ---
 
   if (loading) return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex items-center justify-center p-6 transition-colors">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex items-center justify-center px-4 sm:px-6 py-4 transition-colors">
       <div className="text-center">
         <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
         <p className="text-stone-600 dark:text-stone-400 font-medium">{t.loading}</p>
@@ -591,38 +591,38 @@ export default function App() {
   );
 
   if (!user) return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col items-center justify-center p-8 text-center transition-colors">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col items-center justify-center px-4 sm:px-8 py-8 text-center transition-colors">
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md w-full bg-white dark:bg-stone-900 p-10 rounded-[3rem] shadow-2xl border border-stone-200 dark:border-stone-800 transition-colors"
+        className="max-w-md w-full bg-white dark:bg-stone-900 p-4 sm:p-8 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl border border-stone-200 dark:border-stone-800 transition-colors"
       >
-        <div className="w-24 h-24 bg-orange-100 dark:bg-orange-900/30 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-inner">
-          <Wallet className="w-12 h-12 text-orange-600 dark:text-orange-400" />
+        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-orange-100 dark:bg-orange-900/30 rounded-[1.5rem] sm:rounded-[2rem] flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-inner">
+          <Wallet className="w-10 h-10 sm:w-12 sm:h-12 text-orange-600 dark:text-orange-400" />
         </div>
-        <h1 className="text-2xl font-black text-stone-900 dark:text-stone-50 mb-3 tracking-tight">{t.appName}</h1>
-        <p className="text-xl font-bold text-stone-600 dark:text-stone-400 mb-10 leading-relaxed">
+        <h1 className="text-lg sm:text-2xl font-black text-stone-900 dark:text-stone-50 mb-2 sm:mb-3 tracking-tight">{t.appName}</h1>
+        <p className="text-base sm:text-xl font-bold text-stone-600 dark:text-stone-400 mb-8 sm:mb-10 leading-relaxed">
           {lang === 'mr' ? "ग्रामीण कुटुंबांसाठी सोपे आर्थिक व्यवस्थापन" : "Simple financial management for rural families"}
         </p>
         
         <button 
           onClick={handleLogin}
-          className="w-full py-6 px-8 bg-orange-600 hover:bg-orange-700 text-white rounded-3xl font-black text-xl shadow-xl transition-all flex items-center justify-center gap-4 active:scale-95"
+          className="w-full py-4 sm:py-6 px-4 sm:px-8 bg-orange-600 hover:bg-orange-700 text-white rounded-3xl font-black text-lg sm:text-xl shadow-xl transition-all flex items-center justify-center gap-3 sm:gap-4 active:scale-95"
         >
-          <Globe className="w-8 h-8" />
+          <Globe className="w-6 h-6 sm:w-8 sm:h-8" />
           {t.login}
         </button>
 
-        <div className="mt-12 flex justify-center gap-6">
+        <div className="mt-8 sm:mt-12 flex justify-center gap-4 sm:gap-6">
           <button 
             onClick={() => setLang('mr')}
-            className={cn("px-8 py-4 rounded-2xl text-base font-black transition-all shadow-sm", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400")}
+            className={cn("flex-1 sm:flex-none px-4 sm:px-8 py-3 sm:py-4 rounded-2xl text-sm sm:text-base font-black transition-all shadow-sm", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400")}
           >
             मराठी
           </button>
           <button 
             onClick={() => setLang('en')}
-            className={cn("px-8 py-4 rounded-2xl text-lg font-black transition-all shadow-sm", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400")}
+            className={cn("flex-1 sm:flex-none px-4 sm:px-8 py-3 sm:py-4 rounded-2xl text-sm sm:text-lg font-black transition-all shadow-sm", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400")}
           >
             English
           </button>
@@ -632,61 +632,61 @@ export default function App() {
   );
 
   if (!profile?.familyId) return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 p-8 flex flex-col items-center justify-center transition-colors">
-      <div className="max-w-md w-full space-y-8">
-        <div className="bg-white dark:bg-stone-900 p-10 rounded-[3rem] shadow-2xl border border-stone-200 dark:border-stone-800 transition-colors">
-          <h2 className="text-2xl font-black text-stone-900 dark:text-stone-50 mb-8 text-center leading-tight">{t.welcome},<br/>{user.displayName}</h2>
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 px-4 sm:px-8 py-8 flex flex-col items-center justify-center transition-colors">
+      <div className="max-w-md w-full space-y-6 sm:space-y-8">
+        <div className="bg-white dark:bg-stone-900 p-4 sm:p-8 rounded-[2.5rem] sm:rounded-[3rem] shadow-2xl border border-stone-200 dark:border-stone-800 transition-colors">
+          <h2 className="text-lg sm:text-2xl font-black text-stone-900 dark:text-stone-50 mb-6 sm:mb-8 text-center leading-tight">{t.welcome},<br/>{user.displayName}</h2>
           
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {!showCreateForm && !showJoinForm && (
               <>
                 <button 
                   onClick={() => setShowCreateForm(true)}
-                  className="w-full p-8 bg-orange-50 dark:bg-orange-950/30 border-2 border-orange-200 dark:border-orange-900/50 hover:border-orange-500 rounded-[2rem] text-left transition-all group shadow-sm active:scale-95"
+                  className="w-full p-4 sm:p-6 bg-orange-50 dark:bg-orange-950/30 border-2 border-orange-200 dark:border-orange-900/50 hover:border-orange-500 rounded-[1.5rem] sm:rounded-[2rem] text-left transition-all group shadow-sm active:scale-95"
                 >
-                  <h3 className="text-xl font-black text-orange-900 dark:text-orange-400 mb-2">{t.createFamily}</h3>
-                  <p className="text-orange-700 dark:text-orange-500 text-sm font-bold">{lang === 'mr' ? "तुमच्या कुटुंबासाठी नवीन खाते सुरू करा" : "Start a new account for your family"}</p>
+                  <h3 className="text-base sm:text-xl font-black text-orange-900 dark:text-orange-400 mb-1 sm:mb-2">{t.createFamily}</h3>
+                  <p className="text-orange-700 dark:text-orange-500 text-xs sm:text-sm font-bold">{lang === 'mr' ? "तुमच्या कुटुंबासाठी नवीन खाते सुरू करा" : "Start a new account for your family"}</p>
                 </button>
 
-                <div className="relative py-2">
+                <div className="relative py-1 sm:py-2">
                   <div className="absolute inset-0 flex items-center"><span className="w-full border-t-2 border-stone-100 dark:border-stone-800"></span></div>
-                  <div className="relative flex justify-center text-sm font-black uppercase tracking-widest"><span className="bg-white dark:bg-stone-900 px-4 text-stone-400 dark:text-stone-500">OR</span></div>
+                  <div className="relative flex justify-center text-xs sm:text-sm font-black uppercase tracking-widest"><span className="bg-white dark:bg-stone-900 px-4 text-stone-400 dark:text-stone-500">OR</span></div>
                 </div>
 
                 <button 
                   onClick={() => setShowJoinForm(true)}
-                  className="w-full p-8 bg-stone-50 dark:bg-stone-800 border-2 border-stone-200 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-50 rounded-[2rem] text-left transition-all group shadow-sm active:scale-95"
+                  className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-200 dark:border-stone-700 hover:border-stone-900 dark:hover:border-stone-50 rounded-[1.5rem] sm:rounded-[2rem] text-left transition-all group shadow-sm active:scale-95"
                 >
-                  <h3 className="text-xl font-black text-stone-900 dark:text-stone-50 mb-2">{t.joinFamily}</h3>
-                  <p className="text-stone-600 dark:text-stone-400 text-sm font-bold">{lang === 'mr' ? "तुमच्या कुटुंबाच्या आयडीने सामील व्हा" : "Join using your family's ID"}</p>
+                  <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50 mb-1 sm:mb-2">{t.joinFamily}</h3>
+                  <p className="text-stone-600 dark:text-stone-400 text-xs sm:text-sm font-bold">{lang === 'mr' ? "तुमच्या कुटुंबाच्या आयडीने सामील व्हा" : "Join using your family's ID"}</p>
                 </button>
               </>
             )}
 
             {showCreateForm && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                <div className="space-y-3">
-                  <label className="text-sm font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.familyName}</label>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 sm:space-y-6">
+                <div className="space-y-2 sm:space-y-3">
+                  <label className="text-xs sm:text-sm font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.familyName}</label>
                   <input 
                     type="text" 
                     value={familyNameInput}
                     onChange={(e) => setFamilyNameInput(e.target.value)}
-                    className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none text-lg font-black dark:text-stone-50 transition-all"
+                    className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none text-base sm:text-lg font-black dark:text-stone-50 transition-all"
                     placeholder={lang === 'mr' ? "उदा. चव्हाण कुटुंब" : "e.g. Chavan Family"}
                   />
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3 sm:gap-4">
                   <button 
                     onClick={() => {
                       if (familyNameInput) createFamily(familyNameInput);
                     }}
-                    className="w-full py-6 bg-orange-600 text-white rounded-3xl font-black text-xl shadow-xl active:scale-95 transition-all"
+                    className="w-full py-4 sm:py-6 bg-orange-600 text-white rounded-3xl font-black text-lg sm:text-xl shadow-xl active:scale-95 transition-all"
                   >
                     {t.save}
                   </button>
                   <button 
                     onClick={() => setShowCreateForm(false)}
-                    className="w-full py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-black text-lg"
+                    className="w-full py-4 sm:py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-black text-base sm:text-lg"
                   >
                     {t.cancel}
                   </button>
@@ -695,29 +695,29 @@ export default function App() {
             )}
 
             {showJoinForm && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-                <div className="space-y-3">
-                  <label className="text-sm font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.familyId}</label>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 sm:space-y-6">
+                <div className="space-y-2 sm:space-y-3">
+                  <label className="text-xs sm:text-sm font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.familyId}</label>
                   <input 
                     type="text" 
                     value={familyIdInput}
                     onChange={(e) => setFamilyIdInput(e.target.value)}
-                    className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-stone-900 dark:focus:border-stone-50 outline-none text-lg font-black dark:text-stone-50 transition-all"
+                    className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-stone-900 dark:focus:border-stone-50 outline-none text-base sm:text-lg font-black dark:text-stone-50 transition-all"
                     placeholder="ID..."
                   />
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3 sm:gap-4">
                   <button 
                     onClick={() => {
                       if (familyIdInput) joinFamily(familyIdInput);
                     }}
-                    className="w-full py-6 bg-stone-900 dark:bg-stone-800 text-white rounded-3xl font-black text-xl shadow-xl active:scale-95 transition-all"
+                    className="w-full py-4 sm:py-6 bg-stone-900 dark:bg-stone-800 text-white rounded-3xl font-black text-lg sm:text-xl shadow-xl active:scale-95 transition-all"
                   >
                     {t.joinFamily}
                   </button>
                   <button 
                     onClick={() => setShowJoinForm(false)}
-                    className="w-full py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-black text-lg"
+                    className="w-full py-4 sm:py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-black text-base sm:text-lg"
                   >
                     {t.cancel}
                   </button>
@@ -727,15 +727,15 @@ export default function App() {
           </div>
         </div>
         
-        <button onClick={handleLogout} className="flex items-center gap-3 text-stone-500 hover:text-stone-900 dark:hover:text-stone-50 font-black text-lg mx-auto transition-colors p-4">
-          <LogOut className="w-6 h-6" /> {t.logout}
+        <button onClick={handleLogout} className="flex items-center gap-2 sm:gap-3 text-stone-500 hover:text-stone-900 dark:hover:text-stone-50 font-black text-base sm:text-lg mx-auto transition-colors px-4 sm:px-6 py-4">
+          <LogOut className="w-5 h-5 sm:w-6 h-6" /> {t.logout}
         </button>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 pb-24 transition-colors duration-300">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 pb-24 sm:pb-10 transition-colors duration-300 overflow-x-hidden">
       {/* Feedback Message */}
       <AnimatePresence>
         {feedback && (
@@ -743,13 +743,13 @@ export default function App() {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed bottom-32 left-8 right-8 z-50 pointer-events-none flex justify-center"
+            className="fixed bottom-24 sm:bottom-32 left-4 sm:left-8 right-4 sm:right-8 z-50 pointer-events-none flex justify-center"
           >
             <div className={cn(
-              "px-10 py-6 rounded-[2rem] shadow-2xl flex items-center gap-4 border-2 font-black text-xl backdrop-blur-md",
+              "px-6 sm:px-10 py-4 sm:py-6 rounded-[2rem] shadow-2xl flex items-center gap-4 border-2 font-black text-base sm:text-xl backdrop-blur-md",
               feedback.type === 'success' ? "bg-green-500/90 text-white border-green-400" : "bg-red-500/90 text-white border-red-400"
             )}>
-              {feedback.type === 'success' ? <CheckCircle2 className="w-8 h-8" /> : <AlertTriangle className="w-8 h-8" />}
+              {feedback.type === 'success' ? <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" /> : <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8" />}
               {feedback.msg}
             </div>
           </motion.div>
@@ -757,30 +757,30 @@ export default function App() {
       </AnimatePresence>
 
       {/* Header */}
-      <header className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 sticky top-0 z-10 px-6 py-4 flex items-center justify-between transition-colors shadow-sm">
+      <header className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 sticky top-0 z-10 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between transition-colors shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-orange-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
-            <Wallet className="w-7 h-7" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+            <Wallet className="w-6 h-6 sm:w-7 sm:h-7" />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-stone-900 dark:text-stone-50 leading-tight">{family?.name}</h1>
-            <p className="text-sm text-stone-500 dark:text-stone-400 font-bold">{profile.name} • {t[profile.role]}</p>
+          <div className="min-w-0">
+            <h1 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-stone-50 leading-tight truncate max-w-[140px] sm:max-w-none">{family?.name}</h1>
+            <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{profile.name} • {t[profile.role]}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setView('settings')}
             className={cn(
-              "w-12 h-12 rounded-2xl flex items-center justify-center transition-all",
+              "w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all",
               view === 'settings' ? "bg-orange-600 text-white shadow-lg" : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300"
             )}
           >
-            <Settings className="w-6 h-6" />
+            <Settings className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto p-6 space-y-6">
+      <main className="container-responsive py-4 space-y-4">
         <AnimatePresence mode="wait">
           {view === 'dashboard' && (
             <motion.div 
@@ -799,39 +799,39 @@ export default function App() {
               )}
 
               {/* Summary Cards */}
-              <div className="grid grid-cols-1 gap-4">
-                <div className="bg-white dark:bg-stone-900 p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <p className="text-stone-500 dark:text-stone-400 text-sm font-bold uppercase tracking-wider">{t.totalIncome}</p>
-                    <TrendingUp className="w-6 h-6 text-green-600" />
+                    <p className="text-stone-500 dark:text-stone-400 text-xs sm:text-sm font-bold uppercase tracking-wider">{t.totalIncome}</p>
+                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
                   </div>
-                  <p className="text-2xl font-black text-green-600 dark:text-green-400">₹{stats.income.toLocaleString()}</p>
+                  <p className="text-lg sm:text-2xl font-black text-green-600 dark:text-green-400">₹{stats.income.toLocaleString()}</p>
                 </div>
                 
-                <div className="bg-white dark:bg-stone-900 p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <p className="text-stone-500 dark:text-stone-400 text-sm font-bold uppercase tracking-wider">{t.totalExpense}</p>
-                    <TrendingDown className="w-6 h-6 text-red-600" />
+                    <p className="text-stone-500 dark:text-stone-400 text-xs sm:text-sm font-bold uppercase tracking-wider">{t.totalExpense}</p>
+                    <TrendingDown className="w-5 h-5 sm:w-6 sm:h-6 text-red-600" />
                   </div>
-                  <p className="text-2xl font-black text-red-600 dark:text-red-400">₹{stats.expense.toLocaleString()}</p>
+                  <p className="text-lg sm:text-2xl font-black text-red-600 dark:text-red-400">₹{stats.expense.toLocaleString()}</p>
                 </div>
 
-                <div className="bg-white dark:bg-stone-900 p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <p className="text-stone-500 dark:text-stone-400 text-sm font-bold uppercase tracking-wider">{t.totalSavings}</p>
-                    <PiggyBank className="w-6 h-6 text-blue-600" />
+                    <p className="text-stone-500 dark:text-stone-400 text-xs sm:text-sm font-bold uppercase tracking-wider">{t.totalSavings}</p>
+                    <PiggyBank className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                   </div>
-                  <p className="text-2xl font-black text-blue-600 dark:text-blue-400">₹{stats.savings.toLocaleString()}</p>
+                  <p className="text-lg sm:text-2xl font-black text-blue-600 dark:text-blue-400">₹{stats.savings.toLocaleString()}</p>
                 </div>
 
-                <div className="bg-orange-600 p-8 rounded-[2rem] shadow-xl text-white relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 opacity-10">
-                    <Wallet className="w-32 h-32" />
+                <div className="bg-orange-600 p-5 sm:p-8 rounded-[2rem] shadow-xl text-white relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 sm:p-8 opacity-10">
+                    <Wallet className="w-24 h-24 sm:w-32 sm:h-32" />
                   </div>
-                  <p className="text-orange-200 text-sm font-bold uppercase tracking-wider mb-2">{t.balance}</p>
-                  <p className="text-2xl font-black">₹{stats.balance.toLocaleString()}</p>
+                  <p className="text-orange-200 text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">{t.balance}</p>
+                  <p className="text-lg sm:text-2xl font-black">₹{stats.balance.toLocaleString()}</p>
                   {family?.carryForwardBalance !== undefined && family.carryForwardBalance !== 0 && (
-                    <p className="text-base text-orange-200 mt-2 font-bold">
+                    <p className="text-xs sm:text-base text-orange-200 mt-2 font-bold">
                       {t.carryForward}: ₹{family.carryForwardBalance.toLocaleString()}
                     </p>
                   )}
@@ -841,24 +841,24 @@ export default function App() {
               {/* Budget Alert */}
               {family?.budget && (
                 <div className={cn(
-                  "p-6 rounded-[2rem] flex flex-col gap-4 border transition-colors",
+                  "p-4 sm:p-6 rounded-[2rem] flex flex-col gap-4 border transition-colors",
                   budgetProgress >= 100 ? "bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900/50 text-red-700 dark:text-red-400" : 
                   budgetProgress >= 80 ? "bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-900/50 text-orange-700 dark:text-orange-400" : 
                   "bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-900/50 text-green-700 dark:text-green-400"
                 )}>
-                  <div className="flex items-center gap-4">
-                    {budgetProgress >= 80 ? <AlertTriangle className="w-10 h-10 shrink-0" /> : <CheckCircle2 className="w-10 h-10 shrink-0" />}
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    {budgetProgress >= 80 ? <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 shrink-0" /> : <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 shrink-0" />}
                     <div className="flex-1">
-                      <p className="font-black text-lg leading-tight">
+                      <p className="font-black text-base sm:text-lg leading-tight">
                         {budgetProgress >= 100 ? t.budgetExceeded : budgetProgress >= 80 ? t.budgetAlert : t.goodJob}
                       </p>
-                      <p className="text-xs font-bold opacity-80 mt-1">
+                      <p className="text-[10px] sm:text-xs font-bold opacity-80 mt-1">
                         {lang === 'mr' ? `₹${stats.monthlyExpense.toLocaleString()} खर्च झाले` : `₹${stats.monthlyExpense.toLocaleString()} spent`}
                       </p>
                     </div>
-                    <p className="font-black text-xl">{Math.round(budgetProgress)}%</p>
+                    <p className="font-black text-base sm:text-xl">{Math.round(budgetProgress)}%</p>
                   </div>
-                  <div className="w-full bg-black/10 dark:bg-white/10 h-4 rounded-full overflow-hidden">
+                  <div className="w-full bg-black/10 dark:bg-white/10 h-3 sm:h-4 rounded-full overflow-hidden">
                     <div 
                       className={cn("h-full transition-all", budgetProgress >= 100 ? "bg-red-600" : budgetProgress >= 80 ? "bg-orange-600" : "bg-green-600")} 
                       style={{ width: `${Math.min(budgetProgress, 100)}%` }} 
@@ -869,34 +869,34 @@ export default function App() {
 
               {/* Savings Goal */}
               {family?.savingsGoal && (
-                <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <div className="bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
                   <div className="flex flex-col gap-4 mb-6">
                     <div>
-                      <p className="text-stone-500 dark:text-stone-400 text-xs font-bold uppercase tracking-wider mb-1">{t.savingsGoal}</p>
-                      <h3 className="text-xl font-black text-stone-900 dark:text-stone-50">{family.savingsGoal}</h3>
+                      <p className="text-stone-500 dark:text-stone-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">{t.savingsGoal}</p>
+                      <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50 truncate">{family.savingsGoal}</h3>
                     </div>
                     <div className="flex justify-between items-end">
-                      <p className="text-stone-900 dark:text-stone-50 font-black text-xl">₹{family.currentSavings.toLocaleString()}</p>
-                      <p className="text-stone-500 dark:text-stone-400 font-bold text-base">/ ₹{family.savingsGoalAmount.toLocaleString()}</p>
+                      <p className="text-stone-900 dark:text-stone-50 font-black text-base sm:text-xl">₹{family.currentSavings.toLocaleString()}</p>
+                      <p className="text-stone-500 dark:text-stone-400 font-bold text-sm sm:text-base">/ ₹{family.savingsGoalAmount.toLocaleString()}</p>
                     </div>
                   </div>
-                  <div className="w-full bg-stone-100 dark:bg-stone-800 h-6 rounded-full overflow-hidden">
+                  <div className="w-full bg-stone-100 dark:bg-stone-800 h-4 sm:h-6 rounded-full overflow-hidden">
                     <div 
                       className="bg-orange-600 h-full transition-all shadow-[0_0_15px_rgba(234,88,12,0.3)]" 
                       style={{ width: `${Math.min(savingsProgress, 100)}%` }} 
                     />
                   </div>
                   <div className="flex justify-between items-center mt-4">
-                    <p className="text-stone-900 dark:text-stone-50 font-black text-xl">{Math.round(savingsProgress)}%</p>
-                    <p className="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{t.progress}</p>
+                    <p className="text-stone-900 dark:text-stone-50 font-black text-base sm:text-xl">{Math.round(savingsProgress)}%</p>
+                    <p className="text-xs sm:text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest">{t.progress}</p>
                   </div>
                 </div>
               )}
               {/* Chart */}
               {chartData.length > 0 && (
-                <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
-                  <h3 className="text-xl font-black text-stone-900 dark:text-stone-50 mb-8">{t.monthlySummary}</h3>
-                  <div className="h-72">
+                <div className="bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                  <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50 mb-6 sm:mb-8">{t.monthlySummary}</h3>
+                  <div className="h-60 sm:h-72">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={chartData} margin={{ top: 0, right: 0, left: -20, bottom: 0 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={darkMode ? "#292524" : "#f0f0f0"} />
@@ -931,11 +931,11 @@ export default function App() {
 
               {/* Admin Reports */}
               {profile.role === 'admin' && transactions.length > 0 && (
-                <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                  <div className="p-8 border-b border-stone-100 dark:border-stone-800">
-                    <h3 className="text-xl font-black text-stone-900 dark:text-stone-50">{t.monthlySummary} (Admin)</h3>
+                <div className="bg-white dark:bg-stone-900 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
+                  <div className="p-5 sm:p-8 border-b border-stone-100 dark:border-stone-800">
+                    <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.monthlySummary} (Admin)</h3>
                   </div>
-                  <div className="p-8 space-y-6">
+                  <div className="p-5 sm:p-8 space-y-6">
                     {Object.entries(
                       transactions.reduce((acc, tr) => {
                         if (tr.type === 'expense') {
@@ -946,8 +946,8 @@ export default function App() {
                     ).map(([cat, amt]) => (
                       <div key={cat} className="space-y-2">
                         <div className="flex justify-between items-center">
-                          <span className="text-stone-600 dark:text-stone-400 font-bold text-lg">{cat}</span>
-                          <span className="text-stone-900 dark:text-stone-50 font-black text-xl">₹{amt.toLocaleString()}</span>
+                          <span className="text-stone-600 dark:text-stone-400 font-bold text-base sm:text-lg">{cat}</span>
+                          <span className="text-stone-900 dark:text-stone-50 font-black text-base sm:text-xl">₹{amt.toLocaleString()}</span>
                         </div>
                         <div className="w-full h-3 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
                           <div 
@@ -972,8 +972,8 @@ export default function App() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-6"
             >
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-lg border border-stone-200 dark:border-stone-800 transition-colors">
-                <h2 className="text-2xl font-bold text-stone-900 dark:text-stone-50 mb-8">{t.addTransaction}</h2>
+              <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-lg border border-stone-200 dark:border-stone-800 transition-colors">
+                <h2 className="text-lg sm:text-2xl font-bold text-stone-900 dark:text-stone-50 mb-6 sm:mb-8">{t.addTransaction}</h2>
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   const form = e.target as HTMLFormElement;
@@ -996,23 +996,23 @@ export default function App() {
                   });
                   form.reset();
                   setView('dashboard'); // Return to dashboard after adding
-                }} className="space-y-6">
-                  <div className="grid grid-cols-3 gap-4">
+                }} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                     <label className="flex-1">
                       <input type="radio" name="type" value="expense" defaultChecked className="sr-only peer" />
-                      <div className="p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-950/30 font-bold text-lg transition-all cursor-pointer dark:text-stone-300">
+                      <div className="p-3 sm:p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-950/30 font-bold text-base sm:text-lg transition-all cursor-pointer dark:text-stone-300">
                         {t.expense}
                       </div>
                     </label>
                     <label className="flex-1">
                       <input type="radio" name="type" value="income" className="sr-only peer" />
-                      <div className="p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-950/30 font-bold text-lg transition-all cursor-pointer dark:text-stone-300">
+                      <div className="p-3 sm:p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-950/30 font-bold text-base sm:text-lg transition-all cursor-pointer dark:text-stone-300">
                         {t.income}
                       </div>
                     </label>
                     <label className="flex-1">
                       <input type="radio" name="type" value="savings" className="sr-only peer" />
-                      <div className="p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-blue-500 peer-checked:bg-blue-50 dark:peer-checked:bg-blue-950/30 font-bold text-lg transition-all cursor-pointer dark:text-stone-300">
+                      <div className="p-3 sm:p-4 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-blue-500 peer-checked:bg-blue-50 dark:peer-checked:bg-blue-950/30 font-bold text-base sm:text-lg transition-all cursor-pointer dark:text-stone-300">
                         {t.savings}
                       </div>
                     </label>
@@ -1021,51 +1021,27 @@ export default function App() {
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.amount}</label>
                     <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-stone-400">₹</span>
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl font-black text-stone-400">₹</span>
                       <input 
                         required 
                         name="amount" 
                         type="number" 
                         inputMode="numeric"
                         placeholder="0"
-                        className="w-full p-6 pl-12 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none text-2xl font-black transition-all dark:text-stone-50" 
+                        className="w-full p-4 sm:p-6 pl-10 sm:pl-12 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none text-lg sm:text-2xl font-black transition-all dark:text-stone-50" 
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.category}</label>
                       <div className="flex gap-2">
-                        <select name="category" className="flex-1 p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50 appearance-none">
+                        <select name="category" className="flex-1 p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-base sm:text-lg dark:text-stone-50 appearance-none">
                           {(family?.categories || [t.food, t.farming, t.education, t.medical, t.others]).map(cat => (
                             <option key={cat} value={cat} className="dark:bg-stone-900">{cat}</option>
                           ))}
                         </select>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.addCategory}</label>
-                      <div className="flex gap-2">
-                        <input 
-                          type="text" 
-                          id="newCategoryInput"
-                          placeholder={t.addCategory}
-                          className="flex-1 p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50"
-                        />
-                        <button 
-                          type="button"
-                          onClick={() => {
-                            const input = document.getElementById('newCategoryInput') as HTMLInputElement;
-                            if (input.value) {
-                              addCategory(input.value);
-                              input.value = '';
-                            }
-                          }}
-                          className="px-6 bg-orange-600 text-white rounded-3xl font-bold hover:bg-orange-700 transition-all"
-                        >
-                          <Plus className="w-6 h-6" />
-                        </button>
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -1075,26 +1051,26 @@ export default function App() {
                         name="date" 
                         type="date" 
                         defaultValue={new Date().toISOString().split('T')[0]}
-                        className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50" 
+                        className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-base sm:text-lg dark:text-stone-50" 
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-stone-600 dark:text-stone-400">{t.notes}</label>
-                    <textarea name="notes" className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-medium text-base h-32 dark:text-stone-50" />
+                    <textarea name="notes" className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-medium text-sm sm:text-base h-20 sm:h-32 dark:text-stone-50" />
                   </div>
 
-                  <label className="flex items-center gap-4 p-6 bg-stone-50 dark:bg-stone-800 rounded-3xl cursor-pointer">
-                    <input type="checkbox" name="isRecurring" className="w-8 h-8 rounded-xl border-2 border-stone-300 dark:border-stone-600 text-orange-600 focus:ring-orange-500" />
-                    <span className="font-bold text-lg text-stone-700 dark:text-stone-300">{t.recurring}</span>
+                  <label className="flex items-center gap-3 sm:gap-4 p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-3xl cursor-pointer">
+                    <input type="checkbox" name="isRecurring" className="w-5 h-5 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl border-2 border-stone-300 dark:border-stone-600 text-orange-600 focus:ring-orange-500" />
+                    <span className="font-bold text-sm sm:text-lg text-stone-700 dark:text-stone-300">{t.recurring}</span>
                   </label>
 
-                  <div className="flex gap-4 pt-4">
-                    <button type="submit" className="flex-1 py-6 bg-orange-600 hover:bg-orange-700 text-white rounded-3xl font-bold text-xl shadow-xl transition-all">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                    <button type="submit" className="w-full sm:flex-1 py-4 sm:py-6 px-4 sm:px-8 bg-orange-600 hover:bg-orange-700 text-white rounded-3xl font-bold text-lg sm:text-xl shadow-xl transition-all active:scale-95">
                       {t.save}
                     </button>
-                    <button type="button" onClick={() => setView('dashboard')} className="px-8 py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-bold text-lg">
+                    <button type="button" onClick={() => setView('dashboard')} className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-3xl font-bold text-base sm:text-lg active:scale-95">
                       {t.cancel}
                     </button>
                   </div>
@@ -1102,16 +1078,16 @@ export default function App() {
               </div>
 
               <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-8 border-b border-stone-100 dark:border-stone-800 space-y-6">
+                <div className="p-4 sm:p-8 border-b border-stone-100 dark:border-stone-800 space-y-4 sm:space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-50">{t.transactions}</h3>
+                    <h3 className="text-lg sm:text-2xl font-bold text-stone-900 dark:text-stone-50">{t.transactions}</h3>
                   </div>
                   
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                     <button 
                       onClick={() => setDateFilter(new Date().toISOString().split('T')[0])}
                       className={cn(
-                        "px-6 py-3 rounded-2xl font-bold text-base transition-all",
+                        "px-4 sm:px-6 py-2 sm:py-3 rounded-2xl font-bold text-sm sm:text-base transition-all",
                         dateFilter === new Date().toISOString().split('T')[0] 
                           ? "bg-orange-600 text-white shadow-md shadow-orange-200 dark:shadow-none" 
                           : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
@@ -1122,7 +1098,7 @@ export default function App() {
                     <button 
                       onClick={() => setDateFilter('all')}
                       className={cn(
-                        "px-6 py-3 rounded-2xl font-bold text-base transition-all",
+                        "px-4 sm:px-6 py-2 sm:py-3 rounded-2xl font-bold text-sm sm:text-base transition-all",
                         dateFilter === 'all' 
                           ? "bg-orange-600 text-white shadow-md shadow-orange-200 dark:shadow-none" 
                           : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700"
@@ -1130,12 +1106,12 @@ export default function App() {
                     >
                       {t.all}
                     </button>
-                    <div className="relative flex-1 min-w-[160px]">
+                    <div className="relative flex-1 min-w-[140px] sm:min-w-[160px]">
                       <input 
                         type="date" 
                         value={dateFilter === 'all' ? '' : dateFilter}
                         onChange={(e) => setDateFilter(e.target.value)}
-                        className="w-full px-4 py-3 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-50 rounded-2xl font-bold text-base outline-none focus:ring-2 focus:ring-orange-500 border-none transition-all"
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-50 rounded-2xl font-bold text-sm sm:text-base outline-none focus:ring-2 focus:ring-orange-500 border-none transition-all"
                       />
                     </div>
                   </div>
@@ -1144,25 +1120,25 @@ export default function App() {
                   {transactions
                     .filter(tr => dateFilter === 'all' || tr.date === dateFilter)
                     .map(tr => (
-                    <div key={tr.id} className="p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
-                      <div className="flex items-center gap-5 min-w-0">
+                    <div key={tr.id} className="p-4 sm:p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
+                      <div className="flex items-center gap-3 sm:gap-5 min-w-0">
                         <div className={cn(
-                          "w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm shrink-0",
+                          "w-10 h-10 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shadow-sm shrink-0",
                           tr.type === 'income' ? "bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400" : "bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400"
                         )}>
-                          {tr.type === 'income' ? <TrendingUp className="w-8 h-8" /> : <TrendingDown className="w-8 h-8" />}
+                          {tr.type === 'income' ? <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8" /> : <TrendingDown className="w-6 h-6 sm:w-8 sm:h-8" />}
                         </div>
                         <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <p className="font-bold text-xl text-stone-900 dark:text-stone-50 truncate">{tr.category}</p>
-                            {tr.isRecurring && <Calendar className="w-4 h-4 text-orange-500 shrink-0" />}
+                            <p className="font-bold text-base sm:text-xl text-stone-900 dark:text-stone-50 truncate">{tr.category}</p>
+                            {tr.isRecurring && <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-orange-500 shrink-0" />}
                           </div>
-                          <p className="text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{tr.userName} • {new Date(tr.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}</p>
-                          {tr.notes && <p className="text-base text-stone-400 dark:text-stone-500 mt-1 italic truncate">"{tr.notes}"</p>}
+                          <p className="text-[10px] sm:text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{tr.userName} • {new Date(tr.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}</p>
+                          {tr.notes && <p className="text-xs sm:text-base text-stone-400 dark:text-stone-500 mt-1 italic truncate">"{tr.notes}"</p>}
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 shrink-0 ml-4">
-                        <p className={cn("font-black text-xl", 
+                      <div className="flex items-center gap-2 sm:gap-4 shrink-0 ml-2 sm:ml-4">
+                        <p className={cn("font-black text-base sm:text-xl", 
                           tr.type === 'income' ? "text-green-600 dark:text-green-400" : 
                           tr.type === 'savings' ? "text-blue-600 dark:text-blue-400" :
                           "text-red-600 dark:text-red-400"
@@ -1170,8 +1146,8 @@ export default function App() {
                           {tr.type === 'income' ? '+' : '-'}₹{tr.amount.toLocaleString()}
                         </p>
                         {(tr.uid === user.uid || profile.role === 'admin') && (
-                          <button onClick={() => deleteTransaction(tr.id)} className="p-3 text-stone-300 hover:text-red-600 transition-colors">
-                            <Trash2 className="w-6 h-6" />
+                          <button onClick={() => deleteTransaction(tr.id)} className="p-2 sm:p-3 text-stone-300 hover:text-red-600 transition-colors">
+                            <Trash2 className="w-5 h-5 sm:w-6 sm:h-6" />
                           </button>
                         )}
                       </div>
@@ -1190,41 +1166,41 @@ export default function App() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-6"
             >
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
-                <div className="flex flex-col gap-6 mb-8">
-                  <h2 className="text-2xl font-black text-stone-900 dark:text-stone-50">{t.history}</h2>
+              <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-8">
+                  <h2 className="text-lg sm:text-2xl font-black text-stone-900 dark:text-stone-50">{t.history}</h2>
                   <button 
                     onClick={generateReport}
                     disabled={isGenerating}
-                    className="w-full py-6 bg-orange-600 hover:bg-orange-700 disabled:bg-stone-300 text-white rounded-3xl font-black text-xl shadow-xl transition-all flex items-center justify-center gap-4 active:scale-95"
+                    className="w-full py-4 sm:py-6 bg-orange-600 hover:bg-orange-700 disabled:bg-stone-300 text-white rounded-3xl font-black text-lg sm:text-xl shadow-xl transition-all flex items-center justify-center gap-3 sm:gap-4 active:scale-95"
                   >
-                    <Mail className="w-8 h-8" />
+                    <Mail className="w-6 h-6 sm:w-8 sm:h-8" />
                     {isGenerating ? "Generating..." : t.sendReport}
                   </button>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {archives.length === 0 ? (
-                    <div className="bg-stone-50 dark:bg-stone-800/50 p-16 rounded-[2rem] border-2 border-dashed border-stone-200 dark:border-stone-700 text-center transition-colors">
-                      <Calendar className="w-16 h-16 text-stone-300 dark:text-stone-600 mx-auto mb-4" />
-                      <p className="text-stone-500 dark:text-stone-400 font-bold text-xl">{t.noReports}</p>
+                    <div className="bg-stone-50 dark:bg-stone-800/50 p-8 sm:p-16 rounded-[2rem] border-2 border-dashed border-stone-200 dark:border-stone-700 text-center transition-colors">
+                      <Calendar className="w-12 h-12 sm:w-16 sm:h-16 text-stone-300 dark:text-stone-600 mx-auto mb-4" />
+                      <p className="text-stone-500 dark:text-stone-400 font-bold text-lg sm:text-xl">{t.noReports}</p>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 gap-6">
+                    <div className="grid grid-cols-1 gap-3 sm:gap-4">
                       {archives.map(report => (
                         <div 
                           key={report.id} 
-                          className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors"
+                          className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors"
                         >
-                          <div className="flex justify-between items-start mb-6">
+                          <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
                             <div>
-                              <h3 className="text-xl font-black text-stone-900 dark:text-stone-50">{report.month}</h3>
-                              <p className="text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest mt-1">{t.monthlySummary}</p>
+                              <h3 className="text-lg sm:text-xl font-black text-stone-900 dark:text-stone-50">{report.month}</h3>
+                              <p className="text-[10px] sm:text-sm font-bold text-stone-500 dark:text-stone-400 uppercase tracking-widest mt-1">{t.monthlySummary}</p>
                             </div>
                             <button 
                               onClick={() => setSelectedReport(selectedReport?.id === report.id ? null : report)}
                               className={cn(
-                                "p-4 rounded-2xl font-black text-base transition-all shadow-sm",
+                                "w-full sm:w-auto p-3 sm:p-4 rounded-2xl font-black text-sm sm:text-base transition-all shadow-sm",
                                 selectedReport?.id === report.id ? "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400" : "bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400"
                               )}
                             >
@@ -1232,18 +1208,18 @@ export default function App() {
                             </button>
                           </div>
 
-                          <div className="grid grid-cols-3 gap-4">
-                            <div className="text-center p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
-                              <p className="text-xs font-black text-stone-400 uppercase tracking-wider mb-1">{t.income}</p>
-                              <p className="font-black text-xl text-green-600 dark:text-green-400">₹{report.totalIncome.toLocaleString()}</p>
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                            <div className="text-center p-3 sm:p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+                              <p className="text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">{t.income}</p>
+                              <p className="font-black text-lg sm:text-xl text-green-600 dark:text-green-400">₹{report.totalIncome.toLocaleString()}</p>
                             </div>
-                            <div className="text-center p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
-                              <p className="text-xs font-black text-stone-400 uppercase tracking-wider mb-1">{t.expense}</p>
-                              <p className="font-black text-xl text-red-600 dark:text-red-400">₹{report.totalExpense.toLocaleString()}</p>
+                            <div className="text-center p-3 sm:p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+                              <p className="text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">{t.expense}</p>
+                              <p className="font-black text-lg sm:text-xl text-red-600 dark:text-red-400">₹{report.totalExpense.toLocaleString()}</p>
                             </div>
-                            <div className="text-center p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
-                              <p className="text-xs font-black text-stone-400 uppercase tracking-wider mb-1">{t.balance}</p>
-                              <p className="font-black text-xl text-orange-600 dark:text-orange-400">₹{report.balance.toLocaleString()}</p>
+                            <div className="text-center p-3 sm:p-4 bg-stone-50 dark:bg-stone-800/50 rounded-2xl">
+                              <p className="text-[10px] font-black text-stone-400 uppercase tracking-wider mb-1">{t.balance}</p>
+                              <p className="font-black text-lg sm:text-xl text-orange-600 dark:text-orange-400">₹{report.balance.toLocaleString()}</p>
                             </div>
                           </div>
 
@@ -1257,15 +1233,15 @@ export default function App() {
                               >
                                 {/* Category Breakdown */}
                                 <div>
-                                  <h4 className="text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.category}</h4>
+                                  <h4 className="text-sm sm:text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.category}</h4>
                                   <div className="space-y-3">
                                     {Object.entries(report.categoryBreakdown).map(([cat, amt]) => (
                                       <div key={cat} className="space-y-2">
-                                        <div className="flex justify-between items-center text-base">
-                                          <span className="text-stone-600 dark:text-stone-400 font-bold">{cat}</span>
-                                          <span className="text-stone-900 dark:text-stone-50 font-black">₹{amt.toLocaleString()}</span>
+                                        <div className="flex justify-between items-center text-xs sm:text-base">
+                                          <span className="text-stone-600 dark:text-stone-400 font-bold truncate mr-2">{cat}</span>
+                                          <span className="text-stone-900 dark:text-stone-50 font-black shrink-0">₹{amt.toLocaleString()}</span>
                                         </div>
-                                        <div className="w-full h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
+                                        <div className="w-full h-1.5 sm:h-2 bg-stone-100 dark:bg-stone-800 rounded-full overflow-hidden">
                                           <div className="bg-orange-500 h-full" style={{ width: `${(amt / report.totalExpense) * 100}%` }} />
                                         </div>
                                       </div>
@@ -1275,19 +1251,19 @@ export default function App() {
 
                                 {/* Member Contributions */}
                                 <div>
-                                  <h4 className="text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.memberContribution}</h4>
-                                  <div className="grid grid-cols-1 gap-4">
+                                  <h4 className="text-sm sm:text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.memberContribution}</h4>
+                                  <div className="grid grid-cols-1 gap-3 sm:gap-4">
                                     {Object.entries(report.memberContributions).map(([name, data]) => (
-                                      <div key={name} className="bg-stone-50 dark:bg-stone-800/50 p-6 rounded-[2rem] border-2 border-stone-100 dark:border-stone-800">
-                                        <p className="text-xl font-black text-stone-900 dark:text-stone-50 mb-4">{name}</p>
-                                        <div className="grid grid-cols-2 gap-4">
-                                          <div className="p-4 bg-white dark:bg-stone-900 rounded-2xl shadow-sm">
-                                            <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.income}</p>
-                                            <p className="text-lg font-black text-green-600 dark:text-green-400">₹{data.income.toLocaleString()}</p>
+                                      <div key={name} className="bg-stone-50 dark:bg-stone-800/50 p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] border-2 border-stone-100 dark:border-stone-800">
+                                        <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50 mb-3 sm:mb-4">{name}</p>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                          <div className="p-3 sm:p-4 bg-white dark:bg-stone-900 rounded-xl sm:rounded-2xl shadow-sm">
+                                            <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.income}</p>
+                                            <p className="text-sm sm:text-lg font-black text-green-600 dark:text-green-400">₹{data.income.toLocaleString()}</p>
                                           </div>
-                                          <div className="p-4 bg-white dark:bg-stone-900 rounded-2xl shadow-sm">
-                                            <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.expense}</p>
-                                            <p className="text-lg font-black text-red-600 dark:text-red-400">₹{data.expense.toLocaleString()}</p>
+                                          <div className="p-3 sm:p-4 bg-white dark:bg-stone-900 rounded-xl sm:rounded-2xl shadow-sm">
+                                            <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.expense}</p>
+                                            <p className="text-sm sm:text-lg font-black text-red-600 dark:text-red-400">₹{data.expense.toLocaleString()}</p>
                                           </div>
                                         </div>
                                       </div>
@@ -1297,23 +1273,23 @@ export default function App() {
 
                                 {/* Loan Summary */}
                                 <div>
-                                  <h4 className="text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.loanSummary}</h4>
-                                  <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-6 bg-stone-50 dark:bg-stone-800/50 rounded-3xl border-2 border-stone-100 dark:border-stone-800">
-                                      <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.lent}</p>
-                                      <p className="text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.lent.toLocaleString()}</p>
+                                  <h4 className="text-sm sm:text-lg font-black text-stone-900 dark:text-stone-50 mb-4 uppercase tracking-widest">{t.loanSummary}</h4>
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                                    <div className="p-3 sm:p-6 bg-stone-50 dark:bg-stone-800/50 rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800">
+                                      <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.lent}</p>
+                                      <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.lent.toLocaleString()}</p>
                                     </div>
-                                    <div className="p-6 bg-stone-50 dark:bg-stone-800/50 rounded-3xl border-2 border-stone-100 dark:border-stone-800">
-                                      <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.borrowed}</p>
-                                      <p className="text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.borrowed.toLocaleString()}</p>
+                                    <div className="p-3 sm:p-6 bg-stone-50 dark:bg-stone-800/50 rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800">
+                                      <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.borrowed}</p>
+                                      <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.borrowed.toLocaleString()}</p>
                                     </div>
-                                    <div className="p-6 bg-stone-50 dark:bg-stone-800/50 rounded-3xl border-2 border-stone-100 dark:border-stone-800">
-                                      <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.returned}</p>
-                                      <p className="text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.returned.toLocaleString()}</p>
+                                    <div className="p-3 sm:p-6 bg-stone-50 dark:bg-stone-800/50 rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800">
+                                      <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.returned}</p>
+                                      <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">₹{report.loanSummary.returned.toLocaleString()}</p>
                                     </div>
-                                    <div className="p-6 bg-stone-50 dark:bg-stone-800/50 rounded-3xl border-2 border-stone-100 dark:border-stone-800">
-                                      <p className="text-xs font-black text-stone-400 uppercase mb-1">{t.pending}</p>
-                                      <p className="text-xl font-black text-orange-600 dark:text-orange-400">₹{report.loanSummary.pending.toLocaleString()}</p>
+                                    <div className="p-3 sm:p-6 bg-stone-50 dark:bg-stone-800/50 rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800">
+                                      <p className="text-[10px] font-black text-stone-400 uppercase mb-1">{t.pending}</p>
+                                      <p className="text-base sm:text-xl font-black text-orange-600 dark:text-orange-400">₹{report.loanSummary.pending.toLocaleString()}</p>
                                     </div>
                                   </div>
                                 </div>
@@ -1337,12 +1313,12 @@ export default function App() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-6"
             >
-              <div className="bg-blue-600 p-8 rounded-[2rem] shadow-xl text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-8 opacity-10">
-                  <PiggyBank className="w-32 h-32" />
+              <div className="bg-blue-600 p-5 sm:p-8 rounded-[2rem] shadow-xl text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-5 sm:p-8 opacity-10">
+                  <PiggyBank className="w-24 h-24 sm:w-32 sm:h-32" />
                 </div>
-                <p className="text-blue-200 text-sm font-bold uppercase tracking-wider mb-2">{t.totalSavings}</p>
-                <p className="text-3xl font-black">₹{totalSavingsAmount.toLocaleString()}</p>
+                <p className="text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-wider mb-2">{t.totalSavings}</p>
+                <p className="text-2xl sm:text-3xl font-black">₹{totalSavingsAmount.toLocaleString()}</p>
                 <div className="mt-6 flex items-center gap-4">
                   <div className="flex-1 bg-white/20 h-3 rounded-full overflow-hidden">
                     <div 
@@ -1350,47 +1326,47 @@ export default function App() {
                       style={{ width: `${Math.min(savingsProgress, 100)}%` }} 
                     />
                   </div>
-                  <p className="font-black text-lg">{Math.round(savingsProgress)}%</p>
+                  <p className="font-black text-base sm:text-lg">{Math.round(savingsProgress)}%</p>
                 </div>
-                <p className="text-blue-100 text-sm mt-2 font-bold">
+                <p className="text-blue-100 text-xs sm:text-sm mt-2 font-bold">
                   {t.savingsGoal}: ₹{family?.savingsGoalAmount?.toLocaleString() || 0}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 gap-4">
-                <div className="bg-white dark:bg-stone-900 p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <div className="bg-white dark:bg-stone-900 p-4 sm:p-6 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <p className="text-stone-500 dark:text-stone-400 text-sm font-bold uppercase tracking-wider">{t.monthlySavings}</p>
-                    <TrendingUp className="w-6 h-6 text-blue-600" />
+                    <p className="text-stone-500 dark:text-stone-400 text-xs sm:text-sm font-bold uppercase tracking-wider">{t.monthlySavings}</p>
+                    <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                   </div>
-                  <p className="text-2xl font-black text-blue-600 dark:text-blue-400">₹{stats.monthlySavings.toLocaleString()}</p>
+                  <p className="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-400">₹{stats.monthlySavings.toLocaleString()}</p>
                 </div>
               </div>
 
               <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-8 border-b border-stone-100 dark:border-stone-800">
-                  <h3 className="text-2xl font-bold text-stone-900 dark:text-stone-50">{t.savingsHistory}</h3>
+                <div className="p-5 sm:p-8 border-b border-stone-100 dark:border-stone-800">
+                  <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-50">{t.savingsHistory}</h3>
                 </div>
                 <div className="divide-y divide-stone-100 dark:divide-stone-800">
                   {transactions.filter(t => t.type === 'savings').map(tr => (
-                    <div key={tr.id} className="p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
-                      <div className="flex items-center gap-5 min-w-0">
-                        <div className="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shadow-sm shrink-0">
-                          <PiggyBank className="w-8 h-8" />
+                    <div key={tr.id} className="p-4 sm:p-6 flex items-center justify-between hover:bg-stone-50 dark:hover:bg-stone-800/50 transition-colors">
+                      <div className="flex items-center gap-3 sm:gap-5 min-w-0">
+                        <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-blue-100 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 flex items-center justify-center shadow-sm shrink-0">
+                          <PiggyBank className="w-6 h-6 sm:w-8 sm:h-8" />
                         </div>
                         <div className="min-w-0">
-                          <p className="font-bold text-xl text-stone-900 dark:text-stone-50 truncate">{tr.category}</p>
-                          <p className="text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{tr.userName} • {new Date(tr.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}</p>
-                          {tr.notes && <p className="text-base text-stone-400 dark:text-stone-500 mt-1 italic truncate">"{tr.notes}"</p>}
+                          <p className="font-bold text-lg sm:text-xl text-stone-900 dark:text-stone-50 truncate">{tr.category}</p>
+                          <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 font-bold truncate">{tr.userName} • {new Date(tr.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}</p>
+                          {tr.notes && <p className="text-sm sm:text-base text-stone-400 dark:text-stone-500 mt-1 italic truncate">"{tr.notes}"</p>}
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 shrink-0 ml-4">
-                        <p className="font-black text-xl text-blue-600 dark:text-blue-400">
+                      <div className="flex items-center gap-2 sm:gap-4 shrink-0 ml-2 sm:ml-4">
+                        <p className="font-black text-lg sm:text-xl text-blue-600 dark:text-blue-400">
                           ₹{tr.amount.toLocaleString()}
                         </p>
                         {(tr.uid === user.uid || profile.role === 'admin') && (
-                          <button onClick={() => deleteTransaction(tr.id)} className="p-3 text-stone-400 hover:text-red-600 transition-colors">
-                            <Trash2 className="w-6 h-6" />
+                          <button onClick={() => deleteTransaction(tr.id)} className="p-2 sm:p-3 text-stone-400 hover:text-red-600 transition-colors">
+                            <Trash2 className="w-5 h-5 sm:w-6 sm:h-6" />
                           </button>
                         )}
                       </div>
@@ -1414,33 +1390,33 @@ export default function App() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-6"
             >
-              <div className="bg-stone-900 p-10 rounded-[3rem] shadow-2xl text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-10 opacity-10">
-                  <HandCoins className="w-40 h-40" />
+              <div className="bg-stone-900 p-5 sm:p-8 rounded-[2rem] sm:rounded-[3rem] shadow-2xl text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-5 sm:p-8 opacity-10">
+                  <HandCoins className="w-24 h-24 sm:w-40 sm:h-40" />
                 </div>
-                <h2 className="text-2xl font-black mb-2 tracking-tight">{t.privateLoans}</h2>
-                <p className="text-stone-400 text-sm font-bold mb-10 opacity-80">{t.privateSection}</p>
+                <h2 className="text-base sm:text-2xl font-black mb-2 tracking-tight">{t.privateLoans}</h2>
+                <p className="text-stone-400 text-xs sm:text-sm font-bold mb-6 sm:mb-10 opacity-80">{t.privateSection}</p>
                 
-                <div className="grid grid-cols-1 gap-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm border border-white/5">
-                      <p className="text-stone-400 text-xs font-black uppercase tracking-widest mb-2">{t.lent}</p>
-                      <p className="text-2xl font-black text-green-400">₹{privateLoans.filter(l => l.type === 'lent' && l.status === 'pending').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
+                <div className="grid grid-cols-1 gap-3 sm:gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="bg-white/10 p-4 sm:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-sm border border-white/5">
+                      <p className="text-stone-400 text-[10px] font-black uppercase tracking-widest mb-1 sm:mb-2">{t.lent}</p>
+                      <p className="text-lg sm:text-2xl font-black text-green-400">₹{privateLoans.filter(l => l.type === 'lent' && l.status === 'pending').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
                     </div>
-                    <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm border border-white/5">
-                      <p className="text-stone-400 text-xs font-black uppercase tracking-widest mb-2">{t.borrowed}</p>
-                      <p className="text-2xl font-black text-red-400">₹{privateLoans.filter(l => l.type === 'borrowed' && l.status === 'pending').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
+                    <div className="bg-white/10 p-4 sm:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-sm border border-white/5">
+                      <p className="text-stone-400 text-[10px] font-black uppercase tracking-widest mb-1 sm:mb-2">{t.borrowed}</p>
+                      <p className="text-lg sm:text-2xl font-black text-red-400">₹{privateLoans.filter(l => l.type === 'borrowed' && l.status === 'pending').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
                     </div>
                   </div>
-                  <div className="bg-white/10 p-6 rounded-3xl backdrop-blur-sm border border-white/5">
-                    <p className="text-stone-400 text-xs font-black uppercase tracking-widest mb-2">{t.returned}</p>
-                    <p className="text-2xl font-black text-blue-400">₹{privateLoans.filter(l => l.status === 'returned').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
+                  <div className="bg-white/10 p-4 sm:p-6 rounded-2xl sm:rounded-3xl backdrop-blur-sm border border-white/5">
+                    <p className="text-stone-400 text-[10px] font-black uppercase tracking-widest mb-1 sm:mb-2">{t.returned}</p>
+                    <p className="text-lg sm:text-2xl font-black text-blue-400">₹{privateLoans.filter(l => l.status === 'returned').reduce((acc, l) => acc + l.amount, 0).toLocaleString()}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-lg border border-stone-200 dark:border-stone-800 transition-colors">
-                <h3 className="text-xl font-black text-stone-900 dark:text-stone-50 mb-8">{t.addLoan}</h3>
+              <div className="bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-lg border border-stone-200 dark:border-stone-800 transition-colors">
+                <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50 mb-6 sm:mb-8">{t.addLoan}</h3>
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   const form = e.target as HTMLFormElement;
@@ -1454,48 +1430,48 @@ export default function App() {
                     notes: formData.get('notes') as string
                   });
                   form.reset();
-                }} className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
+                }} className="space-y-4 sm:space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <label className="flex-1">
                       <input type="radio" name="type" value="lent" defaultChecked className="sr-only peer" />
-                      <div className="p-6 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-950/30 font-black text-xl transition-all cursor-pointer dark:text-stone-300">
+                      <div className="p-4 sm:p-6 text-center rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-green-500 peer-checked:bg-green-50 dark:peer-checked:bg-green-950/30 font-black text-base sm:text-xl transition-all cursor-pointer dark:text-stone-300">
                         {t.lent}
                       </div>
                     </label>
                     <label className="flex-1">
                       <input type="radio" name="type" value="borrowed" className="sr-only peer" />
-                      <div className="p-6 text-center rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-950/30 font-black text-xl transition-all cursor-pointer dark:text-stone-300">
+                      <div className="p-4 sm:p-6 text-center rounded-2xl sm:rounded-3xl border-2 border-stone-100 dark:border-stone-800 peer-checked:border-red-500 peer-checked:bg-red-50 dark:peer-checked:bg-red-950/30 font-black text-base sm:text-xl transition-all cursor-pointer dark:text-stone-300">
                         {t.borrowed}
                       </div>
                     </label>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div className="space-y-2">
-                      <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.personName}</label>
-                      <input required name="personName" type="text" className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-xl dark:text-stone-50 transition-all" />
+                      <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.personName}</label>
+                      <input required name="personName" type="text" className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-base sm:text-xl dark:text-stone-50 transition-all" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.amount}</label>
+                      <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.amount}</label>
                       <div className="relative">
-                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-stone-400">₹</span>
-                        <input required name="amount" type="number" inputMode="numeric" className="w-full p-6 pl-12 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-2xl dark:text-stone-50 transition-all" />
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl font-black text-stone-400">₹</span>
+                        <input required name="amount" type="number" inputMode="numeric" className="w-full p-4 sm:p-6 pl-10 sm:pl-12 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-lg sm:text-2xl dark:text-stone-50 transition-all" />
                       </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-6">
+                  <div className="grid grid-cols-1 gap-4 sm:gap-6">
                     <div className="space-y-2">
-                      <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.date}</label>
-                      <input required name="date" type="date" defaultValue={new Date().toISOString().split('T')[0]} className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-xl dark:text-stone-50 transition-all" />
+                      <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.date}</label>
+                      <input required name="date" type="date" defaultValue={new Date().toISOString().split('T')[0]} className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-black text-base sm:text-xl dark:text-stone-50 transition-all" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.notes}</label>
-                      <input name="notes" type="text" className="w-full p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-lg dark:text-stone-50 transition-all" />
+                      <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.notes}</label>
+                      <input name="notes" type="text" className="w-full p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 focus:bg-white dark:focus:bg-stone-900 outline-none font-bold text-sm sm:text-lg dark:text-stone-50 transition-all" />
                     </div>
                   </div>
 
-                  <button type="submit" className="w-full py-6 bg-stone-900 dark:bg-stone-800 hover:bg-black dark:hover:bg-stone-700 text-white rounded-3xl font-black text-xl shadow-xl transition-all active:scale-95">
+                  <button type="submit" className="w-full py-4 sm:py-6 bg-stone-900 dark:bg-stone-800 hover:bg-black dark:hover:bg-stone-700 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-xl transition-all active:scale-95">
                     {t.save}
                   </button>
                 </form>
@@ -1504,60 +1480,60 @@ export default function App() {
               <div className="space-y-6">
                 {privateLoans.map(loan => (
                   <div key={loan.id} className={cn(
-                    "bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 flex flex-col gap-6 transition-all",
+                    "bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 flex flex-col gap-4 sm:gap-6 transition-all",
                     loan.status === 'returned' && "opacity-60 grayscale-[0.5]"
                   )}>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-5">
+                      <div className="flex items-center gap-3 sm:gap-5">
                         <div className={cn(
-                          "w-16 h-16 rounded-2xl flex items-center justify-center shadow-sm",
+                          "w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-sm",
                           loan.type === 'lent' ? "bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400" : "bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400"
                         )}>
-                          <HandCoins className="w-10 h-10" />
+                          <HandCoins className="w-6 h-6 sm:w-10 sm:h-10" />
                         </div>
                         <div>
-                          <p className="font-black text-stone-900 dark:text-stone-50 text-2xl">{loan.personName}</p>
-                          <p className="text-sm text-stone-500 dark:text-stone-400 font-black uppercase tracking-widest mt-1">
+                          <p className="font-black text-stone-900 dark:text-stone-50 text-lg sm:text-2xl">{loan.personName}</p>
+                          <p className="text-[10px] sm:text-sm text-stone-500 dark:text-stone-400 font-black uppercase tracking-widest mt-0.5 sm:mt-1">
                             {loan.type === 'lent' ? t.lent : t.borrowed} • {new Date(loan.date).toLocaleDateString(lang === 'mr' ? 'mr-IN' : 'en-US')}
                           </p>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className={cn("font-black text-2xl", loan.type === 'lent' ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400")}>
+                        <p className={cn("font-black text-lg sm:text-2xl", loan.type === 'lent' ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400")}>
                           ₹{loan.amount.toLocaleString()}
                         </p>
-                        <p className={cn("text-sm font-black uppercase tracking-widest mt-1", loan.status === 'pending' ? "text-orange-600 dark:text-orange-400" : "text-blue-600 dark:text-blue-400")}>
+                        <p className={cn("text-[10px] sm:text-sm font-black uppercase tracking-widest mt-0.5 sm:mt-1", loan.status === 'pending' ? "text-orange-600 dark:text-orange-400" : "text-blue-600 dark:text-blue-400")}>
                           {t[loan.status]}
                         </p>
                       </div>
                     </div>
                     
                     {loan.notes && (
-                      <div className="p-4 bg-stone-50 dark:bg-stone-800 rounded-2xl border border-stone-100 dark:border-stone-700 italic text-stone-500 dark:text-stone-400 font-bold text-lg">
+                      <div className="p-3 sm:p-4 bg-stone-50 dark:bg-stone-800 rounded-xl sm:rounded-2xl border border-stone-100 dark:border-stone-700 italic text-stone-500 dark:text-stone-400 font-bold text-sm sm:text-lg">
                         "{loan.notes}"
                       </div>
                     )}
 
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 sm:gap-4">
                       {loan.status === 'pending' ? (
                         <button 
                           onClick={() => updateLoanStatus(loan.id, 'returned')}
-                          className="flex-1 py-4 bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 rounded-2xl font-black text-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all flex items-center justify-center gap-2"
+                          className="flex-1 py-3 sm:py-4 bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all flex items-center justify-center gap-2"
                         >
-                          <CheckCircle2 className="w-6 h-6" />
+                          <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
                           {lang === 'mr' ? "परत मिळाले" : "Mark Returned"}
                         </button>
                       ) : (
                         <button 
                           onClick={() => updateLoanStatus(loan.id, 'pending')}
-                          className="flex-1 py-4 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-2xl font-black text-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-all flex items-center justify-center gap-2"
+                          className="flex-1 py-3 sm:py-4 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-all flex items-center justify-center gap-2"
                         >
-                          <AlertTriangle className="w-6 h-6" />
+                          <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6" />
                           {lang === 'mr' ? "अजून बाकी" : "Mark Pending"}
                         </button>
                       )}
-                      <button onClick={() => deleteLoan(loan.id)} className="p-4 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 rounded-2xl hover:bg-red-100 dark:hover:bg-red-900/50 transition-all">
-                        <Trash2 className="w-8 h-8" />
+                      <button onClick={() => deleteLoan(loan.id)} className="p-3 sm:p-4 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 rounded-xl sm:rounded-2xl hover:bg-red-100 dark:hover:bg-red-900/50 transition-all">
+                        <Trash2 className="w-6 h-6 sm:w-8 sm:h-8" />
                       </button>
                     </div>
                   </div>
@@ -1574,39 +1550,39 @@ export default function App() {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-6"
             >
-              <div className="bg-white dark:bg-stone-900 p-8 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
-                <h2 className="text-2xl font-black text-stone-900 dark:text-stone-50 mb-8">{t.settings}</h2>
+              <div className="bg-white dark:bg-stone-900 p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 transition-colors">
+                <h2 className="text-lg sm:text-2xl font-black text-stone-900 dark:text-stone-50 mb-6 sm:mb-8">{t.settings}</h2>
                 
-                <div className="space-y-10">
+                <div className="space-y-8 sm:space-y-10">
                   {/* Language & Theme */}
-                  <div className="space-y-6">
-                    <h3 className="text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "प्राधान्ये" : "Preferences"}</h3>
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center justify-between p-6 bg-stone-50 dark:bg-stone-800 rounded-3xl">
-                        <div className="flex items-center gap-4">
-                          <Globe className="w-8 h-8 text-stone-600 dark:text-stone-400" />
-                          <span className="text-xl font-black text-stone-900 dark:text-stone-50">{t.language}</span>
+                  <div className="space-y-4 sm:space-y-6">
+                    <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "प्राधान्ये" : "Preferences"}</h3>
+                    <div className="flex flex-col gap-3 sm:gap-4">
+                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" />
+                          <span className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.language}</span>
                         </div>
                         <div className="flex gap-2">
-                          <button onClick={() => setLang('mr')} className={cn("px-6 py-3 rounded-2xl font-black text-lg transition-all", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>मराठी</button>
-                          <button onClick={() => setLang('en')} className={cn("px-6 py-3 rounded-2xl font-black text-lg transition-all", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>English</button>
+                          <button onClick={() => setLang('mr')} className={cn("px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'mr' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>मराठी</button>
+                          <button onClick={() => setLang('en')} className={cn("px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl font-black text-sm sm:text-lg transition-all", lang === 'en' ? "bg-stone-900 dark:bg-stone-50 text-white dark:text-stone-900" : "bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-400")}>English</button>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between p-6 bg-stone-50 dark:bg-stone-800 rounded-3xl">
-                        <div className="flex items-center gap-4">
-                          {darkMode ? <Moon className="w-8 h-8 text-stone-600 dark:text-stone-400" /> : <Sun className="w-8 h-8 text-stone-600 dark:text-stone-400" />}
-                          <span className="text-xl font-black text-stone-900 dark:text-stone-50">{t.darkMode}</span>
+                      <div className="flex items-center justify-between p-4 sm:p-6 bg-stone-50 dark:bg-stone-800 rounded-2xl sm:rounded-3xl">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          {darkMode ? <Moon className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" /> : <Sun className="w-6 h-6 sm:w-8 sm:h-8 text-stone-600 dark:text-stone-400" />}
+                          <span className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.darkMode}</span>
                         </div>
                         <button 
                           onClick={() => setDarkMode(!darkMode)}
                           className={cn(
-                            "w-20 h-10 rounded-full transition-all relative p-1",
+                            "w-16 sm:w-20 h-8 sm:h-10 rounded-full transition-all relative p-1",
                             darkMode ? "bg-orange-600" : "bg-stone-300"
                           )}
                         >
                           <div className={cn(
-                            "w-8 h-8 bg-white rounded-full shadow-md transition-all",
-                            darkMode ? "translate-x-10" : "translate-x-0"
+                            "w-6 sm:w-8 h-6 sm:h-8 bg-white rounded-full shadow-md transition-all",
+                            darkMode ? "translate-x-8 sm:translate-x-10" : "translate-x-0"
                           )} />
                         </button>
                       </div>
@@ -1614,82 +1590,82 @@ export default function App() {
                   </div>
 
                   {/* Family Info */}
-                  <div className="space-y-6">
-                    <h3 className="text-lg font-black text-stone-400 uppercase tracking-widest">{t.familyInfo}</h3>
-                    <div className="p-8 bg-stone-50 dark:bg-stone-800 rounded-[2rem] space-y-6">
-                      <div className="space-y-2">
-                        <p className="text-base font-black text-stone-500 uppercase tracking-wider">{t.familyName}</p>
-                        <p className="text-xl font-black text-stone-900 dark:text-stone-50">{family?.name}</p>
+                  <div className="space-y-4 sm:space-y-6">
+                    <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{t.familyInfo}</h3>
+                    <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                      <div className="space-y-1 sm:space-y-2">
+                        <p className="text-xs sm:text-base font-black text-stone-500 uppercase tracking-wider">{t.familyName}</p>
+                        <p className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{family?.name}</p>
                       </div>
-                      <div className="space-y-2">
-                        <p className="text-base font-black text-stone-500 uppercase tracking-wider">{t.familyId}</p>
-                        <div className="flex items-center gap-4 p-4 bg-white dark:bg-stone-900 rounded-2xl border-2 border-stone-100 dark:border-stone-700">
-                          <code className="text-xl font-black text-orange-600 dark:text-orange-400 flex-1">{profile.familyId}</code>
+                      <div className="space-y-1 sm:space-y-2">
+                        <p className="text-xs sm:text-base font-black text-stone-500 uppercase tracking-wider">{t.familyId}</p>
+                        <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-white dark:bg-stone-900 rounded-xl sm:rounded-2xl border-2 border-stone-100 dark:border-stone-700">
+                          <code className="text-base sm:text-xl font-black text-orange-600 dark:text-orange-400 flex-1 truncate">{profile.familyId}</code>
                           <button 
                             onClick={() => {
                               navigator.clipboard.writeText(profile.familyId);
                               setFeedback({ msg: lang === 'mr' ? "आयडी कॉपी केला!" : "ID Copied!", type: 'success' });
                             }}
-                            className="p-3 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-xl transition-all"
+                            className="p-2 sm:p-3 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-xl transition-all"
                           >
-                            <Copy className="w-6 h-6 text-stone-400" />
+                            <Copy className="w-5 h-5 sm:w-6 h-6 text-stone-400" />
                           </button>
                         </div>
-                        <p className="text-sm font-bold text-stone-400 mt-2">{lang === 'mr' ? "इतर सदस्यांना जोडण्यासाठी हा आयडी द्या" : "Share this ID to add other members"}</p>
+                        <p className="text-[10px] sm:text-sm font-bold text-stone-400 mt-1 sm:mt-2">{lang === 'mr' ? "इतर सदस्यांना जोडण्यासाठी हा आयडी द्या" : "Share this ID to add other members"}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Budget & Savings */}
                   {profile.role === 'admin' && (
-                    <div className="space-y-6">
-                      <h3 className="text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "बजेट आणि उद्दिष्टे" : "Budget & Goals"}</h3>
+                    <div className="space-y-4 sm:space-y-6">
+                      <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{lang === 'mr' ? "बजेट आणि उद्दिष्टे" : "Budget & Goals"}</h3>
                       <div className="grid grid-cols-1 gap-4">
-                        <div className="p-8 bg-stone-50 dark:bg-stone-800 rounded-[2rem] space-y-6">
-                          <div className="space-y-4">
-                            <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.monthlyBudget}</label>
+                        <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                          <div className="space-y-2 sm:space-y-4">
+                            <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.monthlyBudget}</label>
                             <div className="relative">
-                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-stone-400">₹</span>
+                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl font-black text-stone-400">₹</span>
                               <input 
                                 type="number" 
                                 defaultValue={family?.budget}
                                 onBlur={(e) => updateFamilySettings({ budget: Number(e.target.value) })}
-                                className="w-full p-6 pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none font-black text-2xl dark:text-stone-50"
+                                className="w-full p-4 sm:p-6 pl-10 sm:pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 outline-none font-black text-lg sm:text-2xl dark:text-stone-50"
                               />
                             </div>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-4">
-                              <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.savingsGoal}</label>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            <div className="space-y-2 sm:space-y-4">
+                              <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.savingsGoal}</label>
                               <input 
                                 type="text" 
                                 defaultValue={family?.savingsGoal}
                                 onBlur={(e) => updateFamilySettings({ savingsGoal: e.target.value })}
-                                className="w-full p-6 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none font-black text-xl dark:text-stone-50"
+                                className="w-full p-4 sm:p-6 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 outline-none font-black text-base sm:text-xl dark:text-stone-50"
                               />
                             </div>
-                            <div className="space-y-4">
-                              <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.amount}</label>
+                            <div className="space-y-2 sm:space-y-4">
+                              <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{t.amount}</label>
                               <div className="relative">
-                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-stone-400">₹</span>
+                                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl font-black text-stone-400">₹</span>
                                 <input 
                                   type="number" 
                                   defaultValue={family?.savingsGoalAmount}
                                   onBlur={(e) => updateFamilySettings({ savingsGoalAmount: Number(e.target.value) })}
-                                  className="w-full p-6 pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none font-black text-2xl dark:text-stone-50"
+                                  className="w-full p-4 sm:p-6 pl-10 sm:pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 outline-none font-black text-lg sm:text-2xl dark:text-stone-50"
                                 />
                               </div>
                             </div>
                           </div>
-                          <div className="space-y-4">
-                            <label className="text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{lang === 'mr' ? "सध्याची बचत" : "Current Savings"}</label>
+                          <div className="space-y-2 sm:space-y-4">
+                            <label className="text-xs sm:text-base font-black text-stone-600 dark:text-stone-400 uppercase tracking-wider">{lang === 'mr' ? "सध्याची बचत" : "Current Savings"}</label>
                             <div className="relative">
-                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-stone-400">₹</span>
+                              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl font-black text-stone-400">₹</span>
                               <input 
                                 type="number" 
                                 defaultValue={family?.currentSavings}
                                 onBlur={(e) => updateFamilySettings({ currentSavings: Number(e.target.value) })}
-                                className="w-full p-6 pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-3xl focus:border-orange-500 outline-none font-black text-2xl dark:text-stone-50"
+                                className="w-full p-4 sm:p-6 pl-10 sm:pl-12 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl sm:rounded-3xl focus:border-orange-500 outline-none font-black text-lg sm:text-2xl dark:text-stone-50"
                               />
                             </div>
                           </div>
@@ -1700,15 +1676,15 @@ export default function App() {
 
                   {/* Categories Management */}
                   {profile.role === 'admin' && (
-                    <div className="space-y-6">
-                      <h3 className="text-lg font-black text-stone-400 uppercase tracking-widest">{t.manageCategories}</h3>
-                      <div className="p-8 bg-stone-50 dark:bg-stone-800 rounded-[2rem] space-y-6">
-                        <div className="flex flex-wrap gap-3">
+                    <div className="space-y-4 sm:space-y-6">
+                      <h3 className="text-sm sm:text-lg font-black text-stone-400 uppercase tracking-widest">{t.manageCategories}</h3>
+                      <div className="p-5 sm:p-8 bg-stone-50 dark:bg-stone-800 rounded-[1.5rem] sm:rounded-[2rem] space-y-4 sm:space-y-6">
+                        <div className="flex flex-wrap gap-2 sm:gap-3">
                           {(family?.categories || []).map(cat => (
-                            <div key={cat} className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-stone-900 rounded-2xl border-2 border-stone-100 dark:border-stone-700 font-bold text-stone-700 dark:text-stone-300">
+                            <div key={cat} className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-stone-900 rounded-xl sm:rounded-2xl border-2 border-stone-100 dark:border-stone-700 font-bold text-xs sm:text-base text-stone-700 dark:text-stone-300">
                               {cat}
                               <button onClick={() => removeCategory(cat)} className="text-red-500 hover:text-red-700">
-                                <X className="w-4 h-4" />
+                                <X className="w-3 h-3 sm:w-4 sm:h-4" />
                               </button>
                             </div>
                           ))}
@@ -1718,7 +1694,7 @@ export default function App() {
                             type="text" 
                             id="settingsCategoryInput"
                             placeholder={t.addCategory}
-                            className="flex-1 p-4 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-2xl focus:border-orange-500 outline-none font-bold dark:text-stone-50"
+                            className="flex-1 p-3 sm:p-4 bg-white dark:bg-stone-900 border-2 border-stone-100 dark:border-stone-700 rounded-xl sm:rounded-2xl focus:border-orange-500 outline-none font-bold text-sm sm:text-base dark:text-stone-50"
                           />
                           <button 
                             onClick={() => {
@@ -1728,7 +1704,7 @@ export default function App() {
                                 input.value = '';
                               }
                             }}
-                            className="px-6 bg-stone-900 dark:bg-stone-700 text-white rounded-2xl font-bold hover:bg-black transition-all"
+                            className="px-4 sm:px-6 bg-stone-900 dark:bg-stone-700 text-white rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base hover:bg-black transition-all"
                           >
                             {t.save}
                           </button>
@@ -1740,34 +1716,34 @@ export default function App() {
                   {/* Logout */}
                   <button 
                     onClick={handleLogout}
-                    className="w-full py-6 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 rounded-3xl font-black text-xl hover:bg-red-100 dark:hover:bg-red-900/50 transition-all flex items-center justify-center gap-4 border-2 border-red-100 dark:border-red-900/50"
+                    className="w-full py-4 sm:py-6 bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 rounded-2xl sm:rounded-3xl font-black text-base sm:text-xl hover:bg-red-100 dark:hover:bg-red-900/50 transition-all flex items-center justify-center gap-3 sm:gap-4 border-2 border-red-100 dark:border-red-900/50 active:scale-95"
                   >
-                    <LogOut className="w-8 h-8" />
+                    <LogOut className="w-6 h-6 sm:w-8 sm:h-8" />
                     {t.logout}
                   </button>
                 </div>
               </div>
 
               {/* Members List */}
-              <div className="bg-white dark:bg-stone-900 rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
-                <div className="p-8 border-b-2 border-stone-100 dark:border-stone-800 flex items-center gap-4">
-                  <Users className="w-8 h-8 text-stone-900 dark:text-stone-50" />
-                  <h3 className="text-xl font-black text-stone-900 dark:text-stone-50">{t.familyMembers}</h3>
+              <div className="bg-white dark:bg-stone-900 rounded-[1.5rem] sm:rounded-[2rem] shadow-sm border border-stone-200 dark:border-stone-800 overflow-hidden transition-colors">
+                <div className="p-5 sm:p-8 border-b-2 border-stone-100 dark:border-stone-800 flex items-center gap-3 sm:gap-4">
+                  <Users className="w-6 h-6 sm:w-8 sm:h-8 text-stone-900 dark:text-stone-50" />
+                  <h3 className="text-base sm:text-xl font-black text-stone-900 dark:text-stone-50">{t.familyMembers}</h3>
                 </div>
                 <div className="divide-y-2 divide-stone-100 dark:divide-stone-800">
                   {familyMembers.map(member => (
-                    <div key={member.uid} className="p-8 flex items-center justify-between">
-                      <div className="flex items-center gap-5">
-                        <div className="w-16 h-16 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-400 font-black text-xl shadow-inner">
+                    <div key={member.uid} className="p-5 sm:p-8 flex items-center justify-between">
+                      <div className="flex items-center gap-3 sm:gap-5">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center text-stone-600 dark:text-stone-400 font-black text-lg sm:text-xl shadow-inner">
                           {member.name[0]}
                         </div>
                         <div>
-                          <p className="font-black text-stone-900 dark:text-stone-50 text-xl">{member.name}</p>
-                          <p className="text-sm text-stone-500 dark:text-stone-400 font-black uppercase tracking-widest mt-1">{t[member.role]}</p>
+                          <p className="font-black text-stone-900 dark:text-stone-50 text-base sm:text-xl">{member.name}</p>
+                          <p className="text-[10px] sm:text-sm text-stone-500 dark:text-stone-400 font-black uppercase tracking-widest mt-0.5 sm:mt-1">{t[member.role]}</p>
                         </div>
                       </div>
                       {profile.role === 'admin' && member.uid !== user.uid && (
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
                           {confirmDelete === member.uid ? (
                             <>
                               <button 
@@ -1775,13 +1751,13 @@ export default function App() {
                                   removeMember(member.uid);
                                   setConfirmDelete(null);
                                 }}
-                                className="px-6 py-3 bg-red-600 text-white rounded-2xl font-black text-sm shadow-md"
+                                className="px-4 sm:px-6 py-2 sm:py-3 bg-red-600 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm shadow-md"
                               >
                                 {t.save}
                               </button>
                               <button 
                                 onClick={() => setConfirmDelete(null)}
-                                className="px-6 py-3 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-2xl font-black text-sm"
+                                className="px-4 sm:px-6 py-2 sm:py-3 bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm"
                               >
                                 {t.cancel}
                               </button>
@@ -1789,7 +1765,7 @@ export default function App() {
                           ) : (
                             <button 
                               onClick={() => setConfirmDelete(member.uid)}
-                              className="p-4 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-2xl transition-all font-black text-base"
+                              className="p-2 sm:p-4 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-xl sm:rounded-2xl transition-all font-black text-sm sm:text-base"
                             >
                               {t.remove}
                             </button>
